@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Support Scholaro — Fuel Free Global Education & Buy a Tea 🍵</title>
+    <meta name="description"
+        content="Support Scholaro.xyz and buy Walid Bin Mohammed a tamarind tea. Help keep verified global government scholarship research, CGPA calculators, and route projections 100% free.">
+    <meta name="author" content="Walid Bin Mohammed (mrwalid.me)">
+    <link rel="canonical" href="https://scholaro.xyz/coffee.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scholaro.xyz/coffee.html">
+    <meta property="og:title" content="Support Scholaro — Fuel Free Global Education & Buy a Tea 🍵">
+    <meta property="og:description"
+        content="Support Scholaro.xyz and buy Walid Bin Mohammed a tamarind tea. Help keep verified global scholarship research 100% free and open for students worldwide.">
+    <meta property="og:image" content="https://scholaro.xyz/1.png">
+    <meta property="og:site_name" content="Scholaro.xyz">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Support Scholaro — Fuel Free Global Education & Buy a Tea 🍵">
+    <meta name="twitter:description"
+        content="Support Scholaro.xyz and buy Walid Bin Mohammed a tamarind tea. Help keep verified global scholarship research 100% free and open for students worldwide.">
+    <meta name="twitter:image" content="https://scholaro.xyz/1.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="1.png">
+    <link rel="apple-touch-icon" href="1.png">
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#f6f8fc">
+    <script>
+        // Synchronize theme immediately before render to avoid flash
+        (function () {
+            try {
+                const savedTheme = localStorage.getItem("wse_theme") || "light";
+                document.documentElement.setAttribute("data-theme", savedTheme);
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body class="coffee-body">
+    <div class="coffee-container">
+        <!-- Top Navigation -->
+        <header class="coffee-nav">
+            <div class="coffee-nav-left">
+                <a href="index.html" class="coffee-nav-brand" title="Back to Scholaro Explorer">
+                    <img src="1.png" alt="Scholaro Logo" class="brand-logo-img">
+                    <span>Scholaro<span class="brand-domain">.xyz</span></span>
+                </a>
+            </div>
+            <div class="coffee-nav-right">
+                <div class="visitor-counter-pill" id="visitorCounter"
+                    title="Real verified visits to Scholaro.xyz">
+                    <span class="visitor-pulse-dot" aria-hidden="true"></span>
+                    <span class="visitor-label">Visits</span>
+                    <span class="visitor-count-text" id="visitorCountVal">—</span>
+                </div>
+                <a href="index.html" class="btn-back-explorer" title="Return to scholarship search">
+                    <span>← Back to Scholarships</span>
+                </a>
+                <button class="icon-btn" id="themeToggle" title="Switch to dark mode"
+                    aria-label="Toggle theme">🌙</button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="coffee-hero">
+            <div class="coffee-badge-pill">
+                <span>🍵 Fuel the Mission</span>
+                <span>•</span>
+                <span>Scholaro.xyz</span>
+            </div>
+            <h1 class="coffee-hero-title">
+                Buy Me a Tamarind Tea & <span>Support Free Global Education</span>
+            </h1>
+            <p class="coffee-hero-subtitle">
+                Scholaro is built with love by <b>Walid Bin Mohammed</b> to empower students worldwide with verified
+                government scholarships,
+                eligibility tools, and flight route projections. No paywalls, no clutter, 100% free for every dreamer.
+            </p>
+        </section>
+
+        <!-- Impact Cards Grid -->
+        <section class="coffee-impact-grid">
+            <div class="impact-card">
+                <div class="impact-icon">⚡</div>
+                <div class="impact-title">100% Free Forever</div>
+                <div class="impact-desc">Zero intrusive ads, zero subscription paywalls. Quality scholarship
+                    intelligence accessible to anyone, anywhere.</div>
+            </div>
+            <div class="impact-card">
+                <div class="impact-icon">🔍</div>
+                <div class="impact-title">Verified Official Portals</div>
+                <div class="impact-desc">Direct links to official embassies, ministries of education, and university
+                    commissions worldwide.</div>
+            </div>
+            <div class="impact-card">
+                <div class="impact-icon">🚀</div>
+                <div class="impact-title">Server & Fast CDN Hosting</div>
+                <div class="impact-desc">Your support keeps map servers running smoothly with sub-second response times
+                    for visitors from 100+ countries.</div>
+            </div>
+        </section>
+
+        <!-- Tier Selection -->
+        <section class="coffee-tiers-wrapper">
+            <div class="section-head">
+                <div class="section-head-title">
+                    <span>🍵 Choose a Tamarind Tea Tier</span>
+                </div>
+                <div class="section-head-sub">Every contribution, big or small, helps keep the platform maintained,
+                    updated, and tangy.</div>
+            </div>
+
+            <div class="tier-cards-grid">
+                <!-- Tier 1: One Tea 30 Taka -->
+                <div class="tier-card" onclick="selectTier(this, 'One Tea', '30')">
+                    <div class="tier-icon">🍵</div>
+                    <div class="tier-name">One Tea</div>
+                    <div class="tier-price">30 Taka</div>
+                    <div class="tier-price-bdt">৳30 BDT</div>
+                    <div class="tier-desc">A refreshing cup of tangy tamarind tea to fuel quick bug fixes and data
+                        verification.</div>
+                </div>
+
+                <!-- Tier 2: Two Tea 50 Taka (Popular) -->
+                <div class="tier-card popular selected" onclick="selectTier(this, 'Two Tea', '50')">
+                    <div class="tier-icon">🍵🍵</div>
+                    <div class="tier-name">Two Tea</div>
+                    <div class="tier-price">50 Taka</div>
+                    <div class="tier-price-bdt">৳50 BDT</div>
+                    <div class="tier-desc">Double the energy to update weekly deadlines, eligibility criteria, and add
+                        new host countries.</div>
+                </div>
+
+                <!-- Tier 3: One Week Tea 100 Taka -->
+                <div class="tier-card" onclick="selectTier(this, 'One Week Tea', '100')">
+                    <div class="tier-icon">🍵✨</div>
+                    <div class="tier-name">One Week Tea</div>
+                    <div class="tier-price">100 Taka</div>
+                    <div class="tier-price-bdt">৳100 BDT</div>
+                    <div class="tier-desc">Keeps the tea flowing for an entire week of continuous map improvements,
+                        hosting, and free tools.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direct Payment Options -->
+        <section class="coffee-payment-box">
+            <div class="section-head">
+                <div class="section-head-title">
+                    <span>💳 Direct Mobile Banking (Bangladesh & International)</span>
+                </div>
+                <div class="section-head-sub">Click any card below to instantly copy the account number to your
+                    clipboard.</div>
+            </div>
+
+            <div class="payment-methods">
+                <!-- bKash -->
+                <div class="payment-pill bkash" onclick="copyPayment('01736901564', 'bKash')">
+                    <div class="payment-left">
+                        <span class="payment-tag bkash">bKash</span>
+                        <div class="payment-info">
+                            <span class="payment-name">bKash Personal (Send Money)</span>
+                            <span class="payment-num">01736-901564</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-copy-num"
+                        onclick="event.stopPropagation(); copyPayment('01736901564', 'bKash')">
+                        <span>📋 Copy</span>
+                    </button>
+                </div>
+
+                <!-- Nagad -->
+                <div class="payment-pill nagad" onclick="copyPayment('01865365481', 'Nagad')">
+                    <div class="payment-left">
+                        <span class="payment-tag nagad">Nagad</span>
+                        <div class="payment-info">
+                            <span class="payment-name">Nagad Personal (Send Money)</span>
+                            <span class="payment-num">01865-365481</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-copy-num"
+                        onclick="event.stopPropagation(); copyPayment('01865365481', 'Nagad')">
+                        <span>📋 Copy</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Steps -->
+            <div class="instructions-list">
+                <div class="step-item">
+                    <span class="step-num">1</span>
+                    <span>Open your <b>bKash</b> or <b>Nagad</b> app and select <b>"Send Money"</b>.</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">2</span>
+                    <span>Paste or type the copied number above into the recipient field.</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">3</span>
+                    <span>Enter your chosen amount and add <b>Scholaro</b> in the reference field.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creator Spotlight Card -->
+        <footer class="creator-card">
+            <div class="creator-top">
+                <div class="creator-profile">
+                    <div class="creator-avatar">W</div>
+                    <div>
+                        <div class="creator-name">
+                            <span>Walid Bin Mohammed</span>
+                            <span class="creator-badge">Creator & Developer</span>
+                        </div>
+                        <div class="creator-role">
+                            Dedicated to making higher education opportunities accessible to everyone worldwide • <a
+                                href="https://mrwalid.me" target="_blank" rel="noopener"
+                                class="creator-web-link">mrwalid.me ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="creator-links">
+                    <a href="https://mrwalid.me" target="_blank" rel="noopener" class="social-link web"
+                        title="Personal Website">
+                        <span>🌐 Portfolio</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/Walid Bin Mohammed-Walid Bin Mohammed-0272781b5/?isSelfProfile=true"
+                        target="_blank" rel="noopener" class="social-link linkedin" title="LinkedIn Profile">
+                        <span>💼 LinkedIn</span>
+                    </a>
+                    <a href="https://www.facebook.com/ErrorOwner/" target="_blank" rel="noopener" class="social-link fb"
+                        title="Facebook Profile">
+                        <span>📘 Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/error__owner?igsh=MWxjMjI1cGV1ejI4aQ%3D%3D&utm_source=qr"
+                        target="_blank" rel="noopener" class="social-link insta" title="Instagram Profile">
+                        <span>📸 Instagram</span>
+                    </a>
+                </div>
+            </div>
+            <div class="copyright-clause">
+                <div>
+                    <b>© 2026 Scholaro.xyz</b> — <i>"Your Future. Your Scholarship."</i> All rights reserved.
+                </div>
+                <div>
+                    Built with precision by <a href="https://mrwalid.me" target="_blank" rel="noopener">Walid Bin
+                        Mohammed</a>. Your generous support keeps this platform independent and
+                    thriving.
+                </div>
+            </div>
+        </footer>
+
+        <!-- Back to Explorer CTA -->
+        <div class="coffee-return-cta">
+            <div class="return-cta-title">Ready to discover your next scholarship?</div>
+            <div class="return-cta-desc">
+                Explore fully funded programs, calculate your CGPA requirement match, and visualize global flight
+                routes.
+            </div>
+            <a href="index.html" class="btn-primary-explorer">
+                <span>← Launch Scholarship Explorer</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+        // Toast Notification System
+        let toastTimeout = null;
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            if (!toast) return;
+            toast.textContent = message;
+            toast.classList.add("show");
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3000);
+        }
+
+        // Copy Payment Helper
+        function copyPayment(number, method) {
+            const formatted = number.startsWith("0") ? "+88" + number : number;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(formatted).then(() => {
+                    showToast(`✅ Copied ${method} number: ${number}`);
+                }).catch(() => fallbackCopy(formatted, method));
+            } else {
+                fallbackCopy(formatted, method);
+            }
+        }
+
+        function fallbackCopy(text, label) {
+            try {
+                const ta = document.createElement("textarea");
+                ta.value = text;
+                ta.style.position = "fixed";
+                ta.style.opacity = "0";
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                const success = document.execCommand("copy");
+                document.body.removeChild(ta);
+                if (success) {
+                    showToast(`✅ Copied ${label}: ${text}`);
+                } else {
+                    prompt(`Copy this ${label} number:`, text);
+                }
+            } catch (e) {
+                prompt(`Copy this ${label} number:`, text);
+            }
+        }
+
+        // Tier Card Selection
+        function selectTier(cardEl, name, amount) {
+            document.querySelectorAll(".tier-card").forEach(c => c.classList.remove("selected"));
+            cardEl.classList.add("selected");
+            showToast(`Selected ${name} (${amount} Taka). Thank you for your support!`);
+        }
+
+        // Theme Toggle
+        const themeBtn = document.getElementById("themeToggle");
+        function updateThemeButton() {
+            const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+            if (themeBtn) {
+                themeBtn.textContent = currentTheme === "dark" ? "☀️" : "🌙";
+                themeBtn.setAttribute("title", `Switch to ${currentTheme === "dark" ? "light" : "dark"} mode`);
+            }
+        }
+
+        if (themeBtn) {
+            themeBtn.addEventListener("click", () => {
+                const current = document.documentElement.getAttribute("data-theme") || "light";
+                const nextTheme = current === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", nextTheme);
+                localStorage.setItem("wse_theme", nextTheme);
+                updateThemeButton();
+            });
+        }
+        updateThemeButton();
+
+        // Real Live Visitor Counter Sync
+        (function initVisitorCounter() {
+            const counterEl = document.getElementById("visitorCountVal");
+            if (!counterEl) return;
+            const KEY = "scholaro_xyz_global_visitors";
+            const CACHE_KEY = "scholaro_last_visitor_count";
+            const cachedCount = localStorage.getItem(CACHE_KEY);
+            if (cachedCount && !isNaN(cachedCount)) {
+                counterEl.textContent = Number(cachedCount).toLocaleString();
+            }
+            fetch(`https://countapi.mileshilliard.com/api/v1/get/${KEY}`, { cache: "no-store" })
+                .then(res => res.json())
+                .then(data => {
+                    if (data && typeof data.value === "number") {
+                        counterEl.textContent = data.value.toLocaleString();
+                        localStorage.setItem(CACHE_KEY, data.value);
+                    }
+                })
+                .catch(() => {});
+        })();
+    </script>
+</body>
+
+</html>

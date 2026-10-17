@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Scholaro — Verified Global Government Scholarships & Eligibility Explorer</title>
+    <meta name="description"
+        content="Explore 100+ verified global government scholarships (Chevening, Fulbright, MEXT, CSC, DAAD, KGSP). Check your academic CGPA eligibility, filter criteria, and visualize interactive flight routes on Scholaro.xyz.">
+    <meta name="author" content="Walid Bin Mohammed (mrwalid.me)">
+    <link rel="canonical" href="https://scholaro.xyz/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scholaro.xyz/">
+    <meta property="og:title" content="Scholaro — Verified Global Government Scholarships & Eligibility Explorer">
+    <meta property="og:description"
+        content="Explore verified global government scholarships, calculate academic CGPA eligibility, and visualize interactive flight routes on Scholaro.xyz.">
+    <meta property="og:image" content="https://scholaro.xyz/1.png">
+    <meta property="og:site_name" content="Scholaro.xyz">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Scholaro — Verified Global Government Scholarships & Eligibility Explorer">
+    <meta name="twitter:description"
+        content="Explore verified global government scholarships, calculate academic CGPA eligibility, and visualize interactive flight routes on Scholaro.xyz.">
+    <meta name="twitter:image" content="https://scholaro.xyz/1.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Scholaro",
+      "url": "https://scholaro.xyz/",
+      "description": "Global government scholarship directory, CGPA eligibility calculator, and route projection platform.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://scholaro.xyz/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="1.png">
+    <link rel="apple-touch-icon" href="1.png">
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#f6f8fc">
+    <script>
+        (function () {
+            try {
+                const savedTheme = localStorage.getItem("wse_theme") || "light";
+                document.documentElement.setAttribute("data-theme", savedTheme);
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="app" id="app" data-active-tab="map">
+        <!-- LEFT COLUMN: Map + Route Info + Filter Components -->
+        <div class="left-pane" id="leftPane">
+            <div class="pane-header">
+                <div class="brand">
+                    <h1 class="brand-title">
+                        <img src="1.png" alt="Scholaro Logo" class="brand-logo-img">
+                        <span>Scholaro<span class="brand-domain">.xyz</span></span>
+                    </h1>
+                    <div class="brand-sub">Your Future. Your Scholarship.</div>
+                </div>
+                <div class="header-actions">
+                    <div class="visitor-counter-pill" id="visitorCounter"
+                        title="Real verified visits to Scholaro.xyz">
+                        <span class="visitor-pulse-dot" aria-hidden="true"></span>
+                        <span class="visitor-label">Visits</span>
+                        <span class="visitor-count-text" id="visitorCountVal">—</span>
+                    </div>
+                    <a href="coffee.html" class="btn-support-pill" id="btnSupportHeader"
+                        title="Support Scholaro & Buy Walid Bin Mohammed a tamarind tea">🍵 Buy Me a Tamarind Tea</a>
+                    <button class="icon-btn" id="themeToggle" title="Switch to dark mode"
+                        aria-label="Toggle theme">🌙</button>
+                </div>
+            </div>
+
+            <!-- Map Container -->
+            <div class="map-wrapper">
+                <div class="map-badge">
+                    <span class="pulse-dot"></span> Interactive World Route
+                </div>
+                <button type="button" class="btn-reset-zoom" id="btnResetMapZoom" title="Reset map to full world view"
+                    style="display:none">
+                    🌍 View Full Map
+                </button>
+                <svg id="map"></svg>
+            </div>
+
+            <!-- Flight & Distance Info Banner -->
+            <div class="route-info-card" id="info">
+                <div class="route-hint">
+                    <span>✈️ Click any scholarship or destination to see flight route & distance</span>
+                </div>
+            </div>
+
+            <!-- Filter Components (Order: Origin, CGPA Calculator, Degree, Funding, Field, Region, Desired Country, Experience, Language) -->
+            <div class="filter-section">
+                <div class="filter-header">
+                    <div class="filter-title">
+                        <span>🔍 Filter Criteria</span>
+                    </div>
+                    <button class="btn-reset" id="btnResetFilters" type="button">Reset Filters</button>
+                </div>
+
+                <!-- 1. Origin Country -->
+                <div class="field-group">
+                    <label class="field-label" for="org">
+                        <span>Your Country (Origin)</span>
+                        <span class="field-label-tag">Citizenship</span>
+                    </label>
+                    <div class="select-wrapper">
+                        <select id="org" aria-label="Your country of origin"></select>
+                        <div class="select-arrow">▼</div>
+                    </div>
+                </div>
+
+                <!-- 1b. Your CGPA / Grade (Match Calculator) -->
+                <div class="field-group">
+                    <label class="field-label" for="cgpaInput">
+                        <span>Your Academic CGPA / Score</span>
+                        <span class="field-label-tag" id="scaleTag">Scale: 4.0</span>
+                    </label>
+                    <div class="cgpa-input-row">
+                        <input type="number" id="cgpaInput" class="cgpa-input" step="0.01" min="0"
+                            placeholder="e.g. 3.50">
+                        <button type="button" class="btn-match-toggle" id="btnMatchOnly"
+                            title="Filter to show only scholarships where you meet typical requirement">🎯 Eligible
+                            Only</button>
+                    </div>
+                </div>
+
+                <!-- 2. Degree Level -->
+                <div class="field-group">
+                    <label class="field-label">
+                        <span>Degree Level</span>
+                        <span class="field-label-tag" id="lvlTag">Multi-select</span>
+                    </label>
+                    <div class="chips" id="lvl"></div>
+                </div>
+
+                <!-- 3. Fund Type -->
+                <div class="field-group">
+                    <label class="field-label">
+                        <span>Fund Type</span>
+                        <span class="field-label-tag" id="fundTag">Multi-select</span>
+                    </label>
+                    <div class="chips" id="fund"></div>
+                </div>
+
+                <!-- 4. Field / Domain of Study -->
+                <div class="field-group">
+                    <label class="field-label">
+                        <span>Field / Domain of Study</span>
+                        <span class="field-label-tag" id="domTag">Multi-select</span>
+                    </label>
+                    <div class="chips" id="dom"></div>
+                </div>
+
+                <!-- 5. Destination Region -->
+                <div class="field-group">
+                    <label class="field-label">
+                        <span>Destination Region</span>
+                        <span class="field-label-tag" id="regTag">Multi-select</span>
+                    </label>
+                    <div class="chips" id="reg"></div>
+                </div>
+
+                <!-- 6. Desired Destination Country -->
+                <div class="field-group">
+                    <label class="field-label" for="dstTrigger">
+                        <span>Desired Country (Destination)</span>
+                        <span class="field-label-tag" id="dstLabelTag">Multi-select</span>
+                    </label>
+                    <div class="multi-select-wrapper" id="dstPicker">
+                        <div class="multi-select-box" id="dstTrigger" tabindex="0" role="combobox" aria-expanded="false"
+                            aria-haspopup="listbox">
+                            <div class="multi-select-display" id="dstDisplay">
+                                <span class="multi-select-placeholder">All Desired Countries</span>
+                            </div>
+                            <div class="select-arrow" id="dstArrow">▼</div>
+                        </div>
+                        <div class="multi-select-dropdown" id="dstDropdown" style="display:none" role="listbox">
+                            <div class="multi-select-header">
+                                <input type="text" id="dstSearch" class="multi-select-search"
+                                    placeholder="🔍 Search destination country..." autocomplete="off">
+                            </div>
+                            <div class="multi-select-actions">
+                                <button type="button" class="btn-ms-action" id="btnDstSelectAll">Select All</button>
+                                <button type="button" class="btn-ms-action" id="btnDstClear">Clear</button>
+                                <span class="ms-count" id="dstAvailableCount"></span>
+                            </div>
+                            <div class="multi-select-list" id="dstList"></div>
+                        </div>
+                    </div>
+                    <select id="dst" style="display:none" aria-hidden="true"></select>
+                </div>
+
+                <!-- 7. Work Experience Requirement -->
+                <div class="field-group">
+                    <label class="field-label">
+                        <span>Work Experience</span>
+                        <span class="field-label-tag" id="expTag">Multi-select</span>
+                    </label>
+                    <div class="chips" id="expFilter"></div>
+                </div>
+
+                <!-- 8. Language Requirement -->
+                <div class="field-group language-field-group" id="langFieldGroup">
+                    <label class="field-label">
+                        <span>Language Requirement</span>
+                        <span class="field-label-tag" id="langTag">Multi-select</span>
+                    </label>
+                    <div class="chips" id="langFilter"></div>
+                </div>
+            </div>
+
+            <!-- Bottom spacing buffer so Language Requirement chips never hide under fixed mobile navigation -->
+            <div class="filter-bottom-spacer" aria-hidden="true"></div>
+        </div>
+
+        <!-- RIGHT COLUMN: Available Scholarships & Selected Details -->
+        <div class="right-pane" id="rightPane">
+            <!-- Results Header: Tabs, Search, Sort & Export -->
+            <div class="results-bar">
+                <div class="view-tabs" role="tablist">
+                    <button class="view-tab-btn active" id="tabAll" type="button" role="tab" aria-selected="true">
+                        <span>All Opportunities</span>
+                        <span class="count-pill" id="cntBadge">0</span>
+                    </button>
+                    <button class="view-tab-btn fav-tab" id="tabFavs" type="button" role="tab" aria-selected="false">
+                        <span>❤️ Saved</span>
+                        <span class="count-pill" id="favBadge">0</span>
+                    </button>
+                </div>
+                <div class="results-controls">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" class="search-input"
+                            placeholder="Search by name or country...">
+                    </div>
+                    <div class="select-wrapper" style="width:auto">
+                        <select id="sortSelect" class="sort-select" aria-label="Sort scholarships">
+                            <option value="default">Sort: Region & Country</option>
+                            <option value="name">Sort: Name (A-Z)</option>
+                            <option value="match">Sort: Best CGPA Match</option>
+                            <option value="deadline">Sort: Deadline</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-export" id="btnExport"
+                        title="Copy formatted checklist of current scholarships">
+                        <span>📋 Export</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detailed View of Selected Scholarship (renders inline inside clicked card) -->
+            <div id="det" style="display:none"></div>
+
+            <!-- List of All Available Scholarships -->
+            <div class="cards-list" id="list"></div>
+
+            <!-- Footnote / Sources -->
+            <div class="note">
+                <b>📌 Note on figures & criteria:</b> Statistics shown are official figures published by scholarship
+                bodies or governments (source named in each card). Where no official number exists, "Not published" is
+                shown rather than guessing. CGPA values are approximate conversions onto your country's grading scale,
+                not strict cut-offs. Stipend amounts change yearly — always confirm current terms on the official site.
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Tab Bar -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile View Switcher">
+        <button class="mobile-nav-btn active" id="tabMap" type="button">
+            <span>🗺️ Map & Filters</span>
+        </button>
+        <button class="mobile-nav-btn" id="tabList" type="button">
+            <span>🎓 Scholarships (<span id="mobileCount">0</span>)</span>
+        </button>
+    </nav>
+
+    <!-- Map & Projection Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@3.5.17/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson@1.6.27/build/topojson.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/datamaps@0.5.9/dist/datamaps.world.min.js"></script>
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>
