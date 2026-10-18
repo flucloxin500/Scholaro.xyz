@@ -1,0 +1,15 @@
+{
+  "name": "scholaro-xyz",
+  "version": "1.0.0",
+  "description": "Scholaro — Verified Global Government Scholarships & Eligibility Explorer",
+  "main": "ssr.js",
+  "scripts": {
+    "start": "node ssr.js --serve",
+    "build:js": "npx esbuild scripts.js --minify --outfile=scripts.min.js --legal-comments=none",
+    "build": "npm run build:js && node ssr.js",
+    "verify": "node verify-scholarships.mjs",
+    "test": "node -c scripts.js && node -c ssr.js"
+  },
+  "author": "Walid Bin Mohammed",
+  "license": "MIT"
+}

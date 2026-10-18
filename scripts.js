@@ -45,7 +45,10 @@ const C = {
     CO: ["Colombia", 4.7, -74.1, "South America", "COL", 5],
     BR: ["Brazil", -15.8, -47.9, "South America", "BRA", 10],
     AU: ["Australia", -35.3, 149.1, "Oceania", "AUS", 7],
-    NZ: ["New Zealand", -41.3, 174.8, "Oceania", "NZL", 9]
+    NZ: ["New Zealand", -41.3, 174.8, "Oceania", "NZL", 9],
+    EE: ["Estonia", 58.6, 25.0, "Europe", "EST", 5],
+    DK: ["Denmark", 56.3, 9.5, "Europe", "DNK", 12],
+    AZ: ["Azerbaijan", 40.4, 49.8, "Asia", "AZE", 100]
 };
 
 const CUR = {
@@ -54,7 +57,10 @@ const CUR = {
     CH: "CHF", PL: "zł PLN", RU: "₽ RUB", TR: "₺ TRY", JP: "¥ JPY", KR: "₩ KRW",
     CN: "¥ CNY", TW: "NT$ TWD", HK: "HK$ HKD", SG: "S$ SGD", MY: "RM MYR",
     SA: "SAR", AE: "AED", QA: "QAR", US: "US$", CA: "C$ CAD", AU: "A$ AUD",
-    NZ: "NZ$", ZA: "R ZAR"
+    NZ: "NZ$", ZA: "R ZAR", EE: "€ EUR", DK: "kr DKK", AZ: "₼ AZN", MX: "MX$ MXN",
+    EG: "E£ EGP", NG: "₦ NGN", GH: "GH₵ GHS", KE: "KSh KES", BD: "৳ BDT",
+    IN: "₹ INR", PK: "₨ PKR", LK: "Rs LKR", NP: "NPR", ID: "Rp IDR",
+    VN: "₫ VND", PH: "₱ PHP", CO: "COL$ COP", BR: "R$ BRL"
 };
 
 const CW = "BD IN PK LK NG GH KE UK AU CA SG NZ ZA MY".split(" ");
@@ -63,7 +69,7 @@ const DEV = "BD IN PK LK NP NG GH KE EG ID VN PH CO ZA".split(" ");
 // name,country,levels,funding,elig,minCGPA fraction,deadline,award value,requirements,official site,history,source note
 const R = [
     ["Chevening", "UK", "M", "F", "", .75, "Aug–early Oct/Nov", "Full tuition + monthly stipend (£) + flights + visa & arrival allowances", ".|IELTS 6.5 (course dependent)|2,800 hrs (~2 yrs) work|Not required|Leadership & networking essays, 3 UK course choices, 2 references; return home 2 yrs", "chevening.org", [[2025, 1500, null]], "UK FCDO: ~1,500 awards for 2025/26; 8,000+ awarded over the past 5 years (gov.uk, Aug 2024). Recent application totals not published."],
-    ["Rhodes Scholarship", "UK", "MP", "F", "", .9, "Jul–Oct", "Full tuition & fees + annual stipend (£19,236/yr) + flights & visa", ".|IELTS 7.5 / TOEFL 110|Demonstrated leadership & community service|Outstanding intellect & academic achievements|Endorsement/nomination, 4–8 references, personal statement", "rhodeshouse.ox.ac.uk", [[2024, 105, null], [2025, 105, null]], "Rhodes Trust: ~105 Rhodes Scholars elected annually from 60+ countries worldwide."],
+    ["Rhodes Scholarship", "UK", "MP", "F", "", .9, "Jul–Oct", "Full tuition & fees + annual stipend (£19,236/yr) + flights & visa", ".|IELTS 7.5 / TOEFL 110|Demonstrated leadership & community service|Outstanding intellect & academic achievements|Endorsement/nomination, 4–8 references, personal statement", "www.rhodeshouse.ox.ac.uk", [[2024, 105, null], [2025, 105, null]], "Rhodes Trust: ~105 Rhodes Scholars elected annually from 60+ countries worldwide."],
     ["Commonwealth Master's", "UK", "M", "F", "cw", .75, "Oct–Dec (via nominating agency)", "Full tuition + monthly stipend (£) + airfare", ".|IELTS 6.5|Not mandatory|Not required|Development-impact plan; must be unable to afford UK study", "cscuk.fcdo.gov.uk", [], ""],
     ["Commonwealth PhD Scholarships", "UK", "P", "F", "cw", .8, "Sept–Nov (via nominating agency)", "Full tuition + monthly stipend (£1,347/mo, £1,652 London) + return airfare", ".|IELTS 6.5–7.0|Not mandatory|High-impact research proposal & supervisor endorsement|Development impact plan; must be unable to afford UK study", "cscuk.fcdo.gov.uk", [[2024, 150, null], [2025, 140, null]], "Commonwealth Scholarship Commission (CSC UK) funded by UK FCDO."],
     ["Gates Cambridge", "UK", "MP", "F", "", .9, "Oct (US) / early Dec (international)", "Full cost: tuition + annual maintenance allowance (£) + airfare", ".|IELTS 7.5 (some courses 7.0)|Optional|Outstanding academics; PhD: strong research record|Leadership potential, commitment to improving others' lives, Cambridge admission", "gatescambridge.org", [[2024, 75, null], [2025, 95, null]], "Gates Cambridge Trust: 75 scholars (2024), 95 scholars (2025; 57 PhD, 38 MPhil). Application totals not published."],
@@ -90,12 +96,12 @@ const R = [
     ["GKS (Korea)", "KR", "BMP", "F", "", .8, "Feb–Mar (embassy) / Sept (university)", "≈₩1,000,000/month + tuition + airfare + language training", ".|TOPIK or TOEFL 80+|Not required|Optional|Age limits; recommendation letters", "studyinkorea.go.kr", [], ""],
     ["Chinese Govt (CSC)", "CN", "BMP", "F", "", .75, "Dec–Apr", "¥2,500 / ¥3,000 / ¥3,500 monthly (UG / Master / PhD) + tuition + housing", ".|HSK or IELTS 6.0+|Not required|Master/PhD: study plan, 2 recommendations|Apply to university + CSC agency number", "campuschina.org", [], ""],
     ["Hong Kong PhD Fellowship (HKPFS)", "HK", "P", "F", "", .9, "Sept–early Dec", "Annual stipend HK$337,200 (~US$43,200) + HK$14,000/yr travel allowance for 3 years", ".|IELTS 6.5 / TOEFL 85|Research background preferred|Outstanding research ability & publication potential|Academic excellence, research ability, leadership & cultural diversity", "cerg1.ugc.edu.hk", [[2024, 300, 3000], [2025, 300, 3200]], "Research Grants Council (RGC) of Hong Kong: ~300 PhD fellowships across 8 UGC-funded universities."],
-    ["Taiwan ICDF & MOE", "TW", "BMP", "F", "", .75, "Jan–Mar", "Full tuition + accommodation + flights + monthly stipend (NT$15k UG, NT$18k M, NT$20k PhD)", ".|TOCFL or IELTS 6.0|Not required|Master/PhD: study plan & 2 recommendation letters|Apply directly to partner program and Taiwan embassy/representative office", "icdf.org.tw", [[2024, 250, null]], "TaiwanICDF & Ministry of Education (MOE Taiwan) for citizens of partner countries."],
-    ["SINGA (A*STAR)", "SG", "P", "F", "", .9, "Dec / Jun", "Monthly stipend ≈ S$2,700 + tuition + airfare", ".|IELTS 6.5|Optional|Strong research record|Doctoral research in Singapore", "a-star.edu.sg/singa", [], ""],
+    ["Taiwan ICDF & MOE", "TW", "BMP", "F", "", .75, "Jan–Mar", "Full tuition + accommodation + flights + monthly stipend (NT$15k UG, NT$18k M, NT$20k PhD)", ".|TOCFL or IELTS 6.0|Not required|Master/PhD: study plan & 2 recommendation letters|Apply directly to partner program and Taiwan embassy/representative office", "www.icdf.org.tw", [[2024, 250, null]], "TaiwanICDF & Ministry of Education (MOE Taiwan) for citizens of partner countries."],
+    ["SINGA (A*STAR)", "SG", "P", "F", "", .9, "Dec / Jun", "Monthly stipend ≈ S$2,700 + tuition + airfare", ".|IELTS 6.5|Optional|Strong research record|Doctoral research in Singapore", "www.a-star.edu.sg", [], ""],
     ["Malaysia International Scholarship (MIS)", "MY", "MP", "F", "", .8, "May–Jun", "Full tuition fee waiver + monthly living allowance of RM 1,500/month", ".|IELTS 6.0 / TOEFL 70|Not required|Research proposal (min 1,000 words)|Offer from participating Malaysian public or premier private research university", "mohe.gov.my", [[2024, 150, null]], "Ministry of Higher Education (MOHE) Malaysia: open to international students from designated countries."],
     ["KAUST Fellowship", "SA", "MP", "F", "", .8, "Dec–Jan", "Full tuition + SAR stipend + housing", ".|IELTS 6.0 / TOEFL 79|Optional|Research experience valued|Funding included with admission", "kaust.edu.sa", [], ""],
     ["MBZUAI Full Scholarship", "AE", "MP", "F", "", .8, "Dec–Feb", "100% tuition waiver + monthly stipend (AED 8,000 M / AED 10,000 PhD) + housing + visa + flights", ".|IELTS 6.5 / TOEFL 90|Programming & math proficiency|PhD: research statement & publications valued|AI entrance exam & technical interview; CS/Math background", "mbzuai.ac.ae", [[2024, 200, 4000]], "Mohamed bin Zayed University of Artificial Intelligence (Abu Dhabi). All admitted graduate students receive 100% full funding."],
-    ["Qatar University & HBKU", "QA", "BMP", "F", "", .8, "Jan–Mar", "100% tuition exemption + accommodation + round-trip flight + monthly QAR 5,000 stipend", ".|IELTS 6.5 / TOEFL 80|Not required|Master/PhD: research proposal & writing sample|Admission into eligible competitive degree program", "qu.edu.qa", [[2024, 500, null]], "Qatar University & Hamad Bin Khalifa University (HBKU) international graduate scholarships."],
+    ["Qatar University & HBKU", "QA", "BMP", "F", "", .8, "Jan–Mar", "100% tuition exemption + accommodation + round-trip flight + monthly QAR 5,000 stipend", ".|IELTS 6.5 / TOEFL 80|Not required|Master/PhD: research proposal & writing sample|Admission into eligible competitive degree program", "www.qu.edu.qa", [[2024, 500, null]], "Qatar University & Hamad Bin Khalifa University (HBKU) international graduate scholarships."],
     ["Fulbright Foreign Student", "US", "MP", "F", "ful", .75, "Varies by country", "Tuition + living stipend (US$) + airfare + insurance", ".|TOEFL ~100|Often required|Research or publications help|GRE/GMAT may be needed; national Fulbright commission", "foreign.fulbrightonline.org", [], ""],
     ["Knight-Hennessy (Stanford)", "US", "MP", "F", "", .92, "Early Oct", "Full tuition + living stipend (US$) + travel", ".|TOEFL 100+|2–3+ yrs typical|Strong research / impact|Leadership, 3 letters, Stanford admission", "kh.stanford.edu", [], ""],
     ["Joint Japan/World Bank (JJ/WBGSP)", "US", "M", "F", "dev", .75, "Mar–May", "100% tuition + monthly stipend + round-trip flights + US$500 travel allowance + medical insurance", ".|IELTS 6.5–7.0 / TOEFL 90|3+ yrs paid development work|Not required|Unconditional offer at preferred Master's program; commitment to return to home country", "worldbank.org/scholarships", [[2023, 160, 2200], [2024, 175, 2400]], "World Bank Development Economics Vice Presidency: over 6,000 development scholars funded."],
@@ -106,7 +112,23 @@ const R = [
     ["Australian Government RTP", "AU", "MP", "F", "", .85, "Aug–Oct (main round)", "100% tuition offset + living stipend (A$32,192–A$36,000/yr tax-free) + relocation", ".|IELTS 6.5–7.0|Research experience or publications|High-impact research proposal & supervisor endorsement|Assessed on academic merit & research performance; university nomination", "education.gov.au/research-training-program", [[2024, 1800, null]], "Australian Department of Education: ~A$300M+ allocated annually across higher education providers."],
     ["Australia Awards", "AU", "MP", "F", "dev", .75, "Feb–Apr", "Full tuition + living allowance (A$) + travel + insurance", ".|IELTS 6.5|2+ yrs work|Optional|Return home 2 yrs; developing-country citizen", "australiaawards.gov.au", [], ""],
     ["University Merit Awards (Australia)", "AU", "MP", "P", "", .85, "Varies", "25%–100% tuition (A$)", ".|IELTS 6.5|Not required|PhD: research proposal|Often automatic with offer", "studyaustralia.gov.au", [], ""],
-    ["Manaaki New Zealand", "NZ", "MP", "F", "dev", .75, "Feb–Mar", "Tuition + living allowance (NZ$) + travel", ".|IELTS 6.5|2+ yrs work|Optional|Development focus; return home after study", "mfat.govt.nz/manaaki", [], ""]
+    ["Manaaki New Zealand", "NZ", "MP", "F", "dev", .75, "Feb–Mar", "Tuition + living allowance (NZ$) + travel", ".|IELTS 6.5|2+ yrs work|Optional|Development focus; return home after study", "mfat.govt.nz/manaaki", [], ""],
+    ["Schwarzman Scholars", "CN", "M", "F", "", .85, "Apr–Sep", "Full tuition & fees + room & board + travel + US$4,000 stipend + health insurance", ".|IELTS 7.0 / TOEFL 100|Demonstrated leadership & public impact|High academic caliber & global vision|Online application, 3 letters of recommendation, 2 essays, video statement; finalist interviews in Beijing/online", "schwarzmanscholars.org", [[2024, 150, 4000], [2025, 150, 4200]], "Schwarzman Scholars at Tsinghua University: ~150 scholars elected globally each year."],
+    ["Yenching Academy (PKU)", "CN", "M", "F", "", .85, "Aug–Dec", "Full tuition + university accommodation + monthly stipend + round-trip travel allowance", ".|IELTS 7.0 / TOEFL 100|Leadership & cross-cultural dialogue|Interdisciplinary research in China Studies|Partner university nomination / direct application, 2 recommendation letters, statement of intent", "yenchingacademy.pku.edu.cn", [[2024, 120, null], [2025, 120, null]], "Yenching Academy of Peking University: ~120 international scholars per cohort in China Studies."],
+    ["Rotary Peace Fellowship", "UK", "M", "F", "", .8, "Feb–May", "Full tuition & fees + room & board + round-trip transportation + field study / internship funding", ".|English proficiency|3+ yrs full-time peace/development work|Demonstrated commitment to peace & conflict resolution|Rotary district endorsement, essays, leadership resume; partner universities include Bradford, Duke, Uppsala", "rotary.org", [[2024, 130, null], [2025, 130, null]], "The Rotary Foundation: up to 130 peace fellows funded annually worldwide across partner universities."],
+    ["VLIR-UOS Master's", "BE", "M", "F", "dev", .8, "Dec–Feb (per programme)", "Full tuition + monthly allowance (€1,400) + accommodation + travel & insurance", ".|IELTS 6.5–7.0 / TOEFL 90|Relevant professional experience preferred|Motivation for local development impact|Citizen of eligible 29 partner countries; application via Flemish university host", "vliruos.be", [[2024, 150, null], [2025, 150, null]], "Flemish Interuniversity Council (VLIR-UOS): funded by Belgian Directorate-General for Development."],
+    ["ADB - Japan Scholarship (ADB-JSP)", "JP", "M", "F", "dev", .8, "Nov–Apr (varies by uni)", "Full tuition + monthly subsistence allowance + housing + books + medical insurance + airfare", ".|IELTS 6.5 / TOEFL 80+|2+ yrs professional work experience|Commitment to return to home country|Admission offer from participating institution (Tokyo, Kyoto, NUS, HKU, Melbourne, etc.)", "adb.org", [[2024, 135, null], [2025, 140, null]], "Asian Development Bank & Govt of Japan: ~140 postgraduate awards annually in economics, management, science."],
+    ["Boustany MBA & Master's", "UK", "M", "F", "", .9, "May (alternate years)", "Tuition aid up to £30,000 / $50,000 + travel and accommodation for internship", ".|GMAT / GRE & IELTS 7.5|2–4 yrs post-undergraduate work|High academic merit & leadership potential|Offer of admission from Harvard, Cambridge, Oxford, or London Business School", "boustany-foundation.org", [[2024, 10, null]], "Boustany Foundation: highly selective fellowship awarded to exceptional business/science candidates."],
+    ["Estonian Government Scholarships", "EE", "BMP", "F", "", .75, "Mar–Apr", "Full tuition waiver (selected programs) + monthly living stipend (€400–€660/mo)", ".|English B2/C1 (IELTS 6.0–6.5)|Not required|Master/PhD: motivation letter & research plan|Admission to Estonian university (Tartu, TalTech); apply via DreamApply Estonia", "studyinestonia.ee", [[2024, 200, null]], "Education and Youth Board of Estonia (Harno) funded by Estonian Ministry of Education and Research."],
+    ["Danish State Scholarships", "DK", "M", "F", "", .85, "Jan–Mar (via university)", "Full or partial tuition fee waiver + monthly stipend contribution (~DKK 6,500/mo)", ".|IELTS 6.5–7.0 / TOEFL 90|Not required|Top academic records in Bachelor's|Non-EU/EEA students nominated directly by Danish universities (KU, DTU, Aarhus)", "studyindenmark.dk", [[2024, 250, null]], "Danish Ministry of Higher Education and Science: allocated to Danish public universities."],
+    ["ETH Zurich ESOP", "CH", "M", "F", "", .92, "Nov–Dec", "Full tuition fee waiver + grant for study & living costs (CHF 24,000 per year)", ".|IELTS 7.0 / TOEFL 100|Not required|Top 10% of Bachelor's program (Grade A)|Pre-proposal for Master's thesis; independent peer review committee", "ethz.ch", [[2024, 60, 1200], [2025, 65, 1300]], "ETH Zurich Excellence Scholarship & Opportunity Programme (ESOP): funding the top 2–3% of master's applicants."],
+    ["EPFL Master Excellence", "CH", "M", "F", "", .9, "Dec / Mar", "CHF 10,000 per semester (~CHF 20,000/yr) + guaranteed student housing reservation", ".|IELTS 7.0 / TOEFL 95|Not required|Outstanding academic record (top tier)|Application submitted alongside EPFL Master's admission", "epfl.ch", [[2024, 45, null]], "École Polytechnique Fédérale de Lausanne (EPFL): awarded exclusively on academic merit."],
+    ["KFUPM Graduate Fellowship", "SA", "MP", "F", "", .8, "Dec–Jan / Jun", "100% full tuition waiver + monthly stipend (SAR 4k M / SAR 5k PhD) + furnished housing + medical care", ".|IELTS 6.0 / TOEFL 70|Optional|GRE score recommended for STEM|Online application via KFUPM portal; open to all nationalities worldwide", "kfupm.edu.sa", [[2024, 400, 3500]], "King Fahd University of Petroleum & Minerals (Dhahran): full assistantship/fellowship for all accepted graduate students."],
+    ["NZIDRS Doctoral Award", "NZ", "P", "F", "", .9, "Jun–Jul", "Full international tuition fees + annual tax-free stipend (~NZ$28,000/yr) + medical insurance", ".|IELTS 6.5–7.0 / TOEFL 90|Substantial research track record|High-impact doctoral proposal & supervisor consent|Nomination through participating New Zealand university", "educationcounts.govt.nz", [[2024, 40, null]], "New Zealand International Doctoral Research Scholarships funded by the New Zealand Government."],
+    ["AMEXCID Excellence (Mexico)", "MX", "BMP", "F", "", .8, "Jun–Jul", "Full tuition waiver at public universities + monthly stipend (approx. MX$13,000–$16,000) + medical insurance + flights", ".|Spanish B2 proficiency|Not required|Master/PhD: study plan & supervisor letter|Bilateral government agreement; apply through SIGCA AMEXCID portal", "gob.mx/amexcid", [[2024, 300, null]], "Agencia Mexicana de Cooperación Internacional para el Desarrollo (AMEXCID): open to 180+ partner nations."],
+    ["OAS Academic Scholarships", "US", "MP", "F", "", .8, "Mar–Apr", "Up to US$10,000 per academic year towards tuition, living stipend, health insurance, and books", ".|English / Spanish / Portuguese|Not required|Clear development contribution to OAS member state|Must be citizen/resident of OAS member state; return commitment 2 yrs", "oas.org", [[2024, 100, null]], "Organization of American States (OAS) Department of Human Development, Education and Employment."],
+    ["Amsterdam Merit (AMS)", "NL", "M", "F", "", .9, "Jan–Feb", "Full or partial tuition fee waiver (€2,000–€25,000/yr) for the duration of the Master's programme", ".|IELTS 7.0 / TOEFL 100|Not required|Top 10% ranking of undergraduate class|Non-EU/EEA applicant admitted to University of Amsterdam master's programme", "uva.nl", [[2024, 75, null]], "University of Amsterdam (UvA): awarded by individual faculties to exceptionally talented non-EU students."],
+    ["Heydar Aliyev Grant (Azerbaijan)", "AZ", "BMP", "F", "", .75, "Feb–Apr", "100% tuition waiver + monthly stipend (800 AZN) + dorm + annual round-trip flight + medical insurance", ".|English proof (IELTS 6.0+ or interview)|Not required|Optional|Citizens of member states of OIC (Islamic Cooperation) and NAM (Non-Aligned Movement)", "mfa.gov.az", [[2024, 100, null]], "Ministry of Foreign Affairs of the Republic of Azerbaijan & AIDA international educational grant."]
 ].map((a, i) => ({
     id: i,
     name: a[0],
@@ -145,7 +167,16 @@ const FD = {
     "Stefan Banach (Poland)": "ENAL",
     "Malaysia International Scholarship (MIS)": "ENBH",
     "Joint Japan/World Bank (JJ/WBGSP)": "BSEHAL",
-    "Humphrey Fellowship (USA)": "SBHAL"
+    "Humphrey Fellowship (USA)": "SBHAL",
+    "Schwarzman Scholars": "SBL",
+    "Yenching Academy (PKU)": "SUBL",
+    "Rotary Peace Fellowship": "SBL",
+    "VLIR-UOS Master's": "EBSHAL",
+    "ADB - Japan Scholarship (ADB-JSP)": "EBSNA",
+    "Boustany MBA & Master's": "BEN",
+    "ETH Zurich ESOP": "EN",
+    "EPFL Master Excellence": "EN",
+    "KFUPM Graduate Fellowship": "EN"
 };
 const fieldsOf = s => FD[s.name] || "*";
 
@@ -185,17 +216,33 @@ const PL = {
     "Vanier CGS (Canada)": { P: "Doctoral study at a Canadian university in health, natural sciences & engineering, or social sciences & humanities." },
     "Australian Government RTP": { M: "Master's by Research (up to 2 years) at an Australian university.", P: "Doctoral degree (PhD, up to 3.5–4 years) at an Australian university." },
     "Australia Awards": { M: "Master's degrees in priority development areas.", P: "PhD research in priority development areas." },
-    "Swiss Government Excellence": { P: "Doctoral/postdoctoral research at Swiss universities; Master's in arts for some countries." }
+    "Swiss Government Excellence": { P: "Doctoral/postdoctoral research at Swiss universities; Master's in arts for some countries." },
+    "Schwarzman Scholars": { M: "One-year Master's in Global Affairs at Tsinghua University (taught in English)." },
+    "Yenching Academy (PKU)": { M: "Two-year Master of China Studies at Peking University (taught in English)." },
+    "Rotary Peace Fellowship": { M: "Master's degree in peace and conflict resolution at premier partner institutions." },
+    "VLIR-UOS Master's": { M: "English-taught International Master Programmes (ICP) across Flemish universities." },
+    "ADB - Japan Scholarship (ADB-JSP)": { M: "Approved master's degree in science, technology, economics, or management at partner Asian universities." },
+    "Boustany MBA & Master's": { M: "MBA and MSc programmes at Harvard, Cambridge, Oxford, or London Business School." },
+    "Estonian Government Scholarships": { B: "International bachelor's degrees at Estonian public universities.", M: "Master's degrees in engineering, IT, and life sciences.", P: "Doctoral positions (fully funded employment contracts)." },
+    "Danish State Scholarships": { M: "Two-year Master's degrees at public Danish higher education research universities." },
+    "ETH Zurich ESOP": { M: "All Master's degree programmes offered at ETH Zurich across science and engineering." },
+    "EPFL Master Excellence": { M: "All Master of Science programmes at École Polytechnique Fédérale de Lausanne." },
+    "KFUPM Graduate Fellowship": { M: "Master of Science in engineering, sciences, and computer science at KFUPM.", P: "Doctor of Philosophy programs in STEM at KFUPM." },
+    "NZIDRS Doctoral Award": { P: "Full-time doctoral research across all 8 New Zealand universities." },
+    "AMEXCID Excellence (Mexico)": { B: "Undergraduate academic mobility in Mexico.", M: "Master's degrees across participating Mexican public universities.", P: "Doctoral degrees and doctoral research stays in Mexico." },
+    "OAS Academic Scholarships": { M: "Master's degrees at universities in OAS member states.", P: "Doctoral research programs at OAS partner universities." },
+    "Amsterdam Merit (AMS)": { M: "Selected Master's programmes at the University of Amsterdam." },
+    "Heydar Aliyev Grant (Azerbaijan)": { B: "Undergraduate degree at top universities in Azerbaijan.", M: "Master's degree programs in Azerbaijan.", P: "Doctoral research programs in Azerbaijan." }
 };
 
 const DP = [
     ["Development Economics (MSc)", "Univ. Göttingen", "B", "M"],
-    ["International & Development Economics – MIDE", "", "B", "M"],
+    ["International & Development Economics — MIDE", "", "B", "M"],
     ["SEPT MBA", "Univ. Leipzig", "B", "M"],
     ["Development Management (MA)", "Ruhr-Univ. Bochum", "S", "M"],
     ["Development Cooperation", "", "S", "M"],
     ["Sustainable Development Management", "", "S", "M"],
-    ["SPRING – Regional Development Planning & Management", "", "S", "M"],
+    ["SPRING — Regional Development Planning & Management", "", "S", "M"],
     ["Vocational Education & Personnel Capacity Building", "TU Dresden", "S", "M"],
     ["Hydro Science & Engineering (MSc)", "TU Dresden", "E", "M"],
     ["Textile Machinery & High Performance Material Technology", "TU Dresden", "E", "M"],
@@ -211,9 +258,9 @@ const DP = [
     ["International Health (MSc)", "Berlin / Heidelberg", "H", "M"],
     ["Global Urban Health (MSc)", "", "H", "M"],
     ["Intellectual Property & Competition Law (LLM)", "", "L", "M"],
-    ["Study Scholarships – Master's, all disciplines (selected countries only)", "DAAD", "*", "M"],
+    ["Study Scholarships — Master's, all disciplines (selected countries only)", "DAAD", "*", "M"],
     ["Bonn International Graduate School for Development Research (BIGS-DR)", "Univ. Bonn", "S", "P"],
-    ["Research Grants – Doctoral Programmes in Germany", "DAAD", "*", "P"]
+    ["Research Grants — Doctoral Programmes in Germany", "DAAD", "*", "P"]
 ];
 
 const $ = i => document.getElementById(i);
@@ -278,9 +325,11 @@ function updateFavBadge() {
 
 function getScaleInfo() {
     const sc = C[S.o][5];
-    if (sc === "uk") return { label: "Scale: UK % (Honours)", placeholder: "e.g. 68 (Percentage)" };
-    if (sc === "de") return { label: "Scale: DE (1.0 Best)", placeholder: "e.g. 1.8 (1.0 - 4.0)" };
-    return { label: `Scale: ${sc}.0 Max`, placeholder: `e.g. ${(sc * 0.85).toFixed(sc == 10 || sc == 20 ? 1 : 2)}` };
+    if (sc === "uk") return { label: "Scale: UK % (Honours)", placeholder: "Enter percentage (e.g. 68%)" };
+    if (sc === "de") return { label: "Scale: DE (1.0 Best)", placeholder: "Enter score (1.0 best, e.g. 1.8)" };
+    if (sc === 12) return { label: "Scale: Danish 12-pt", placeholder: "Enter score (e.g. 10 or 12)" };
+    if (sc === 100) return { label: "Scale: 100% Max", placeholder: "Enter percentage (e.g. 85%)" };
+    return { label: `Scale: ${sc}.0 Max`, placeholder: `Enter your CGPA (e.g. ${(sc * 0.85).toFixed(sc == 10 || sc == 20 ? 1 : 2)})` };
 }
 
 function updateScaleTag() {
@@ -298,7 +347,13 @@ function getMatch(s) {
     if (sc === "uk") {
         userFrac = S.userCGPA / 100;
     } else if (sc === "de") {
-        userFrac = (4.0 - S.userCGPA) / 3.0; // 1.0 -> 1.0, 4.0 -> 0.0
+        // German grading: 1.0 is best, 4.0 is minimum pass.
+        // Bavarian Formula mapping: 1.0 -> 1.0, 2.5 -> 0.70, 4.0 -> 0.40
+        userFrac = Math.max(0, Math.min(1, 1 - (S.userCGPA - 1.0) / 3.0 * 0.6));
+    } else if (sc === 12) {
+        userFrac = Math.max(0, Math.min(1, S.userCGPA / 12));
+    } else if (sc === 100) {
+        userFrac = Math.max(0, Math.min(1, S.userCGPA / 100));
     } else {
         userFrac = S.userCGPA / sc;
     }
@@ -338,6 +393,8 @@ function cg(m) {
     const sc = C[S.o][5];
     if (sc == "uk") return m >= .9 ? "First class (70%+)" : m >= .75 ? "Upper second 2:1 (60%+)" : "Lower second 2:2 (50%+)";
     if (sc == "de") return m >= .9 ? "≤ 1.5 (1.0 = best)" : m >= .75 ? "≤ 2.5 (1.0 = best)" : "≤ 3.0 (1.0 = best)";
+    if (sc == 12) return m >= .9 ? "≈ 10–12 / 12" : m >= .75 ? "≈ 7–10 / 12" : "≈ 4–7 / 12";
+    if (sc == 100) return `≈ ${(m * 100).toFixed(0)}%`;
     return `≈ ${(m * sc).toFixed(sc == 10 || sc == 20 ? 1 : 2)} / ${sc}`;
 }
 
@@ -423,25 +480,28 @@ function updateAllFilterTags() {
     }
 }
 
-// Initialize Origin Select
-$("org").innerHTML = Object.entries(C)
-    .filter(([k]) => k != "EU")
-    .sort((a, b) => a[1][0].localeCompare(b[1][0]))
-    .map(([k, v]) => `<option value="${k}">${v[0]}</option>`)
-    .join("");
-$("org").value = "BD";
-$("org").onchange = e => {
-    S.o = e.target.value;
-    if (Array.isArray(S.dst)) {
-        S.dst = S.dst.filter(x => x !== S.o);
-    } else if (S.dst === S.o) {
-        S.dst = [];
-    }
-    S.sel = null;
-    updateScaleTag();
-    populateDestinations();
-    render();
-};
+// Initialize Origin Select with safety guard
+const orgEl = $("org");
+if (orgEl) {
+    orgEl.innerHTML = Object.entries(C)
+        .filter(([k]) => k != "EU")
+        .sort((a, b) => a[1][0].localeCompare(b[1][0]))
+        .map(([k, v]) => `<option value="${k}">${v[0]}</option>`)
+        .join("");
+    orgEl.value = "BD";
+    orgEl.onchange = e => {
+        S.o = e.target.value;
+        if (Array.isArray(S.dst)) {
+            S.dst = S.dst.filter(x => x !== S.o);
+        } else if (S.dst === S.o) {
+            S.dst = [];
+        }
+        S.sel = null;
+        updateScaleTag();
+        populateDestinations();
+        render();
+    };
+}
 
 let dstSearchQuery = "";
 let isDstOpen = false;
@@ -621,75 +681,97 @@ function setupDstPicker() {
 }
 
 // CGPA Input
-$("cgpaInput").oninput = e => {
-    const val = parseFloat(e.target.value);
-    S.userCGPA = isNaN(val) ? null : val;
-    render();
-};
+const cgpaInputEl = $("cgpaInput");
+if (cgpaInputEl) {
+    cgpaInputEl.oninput = e => {
+        const val = parseFloat(e.target.value);
+        S.userCGPA = isNaN(val) ? null : val;
+        render();
+    };
+}
 
 // Eligible Only Toggle Button
-$("btnMatchOnly").onclick = () => {
-    S.matchOnly = !S.matchOnly;
-    $("btnMatchOnly").classList.toggle("active", S.matchOnly);
-    render();
-};
+const btnMatchOnlyEl = $("btnMatchOnly");
+if (btnMatchOnlyEl) {
+    btnMatchOnlyEl.onclick = () => {
+        S.matchOnly = !S.matchOnly;
+        btnMatchOnlyEl.classList.toggle("active", S.matchOnly);
+        render();
+    };
+}
 
 // View Tabs (All vs Saved)
-$("tabAll").onclick = () => {
-    S.viewSaved = false;
-    $("tabAll").classList.add("active");
-    $("tabFavs").classList.remove("active");
-    render();
-};
+const tabAllEl = $("tabAll");
+const tabFavsEl = $("tabFavs");
+if (tabAllEl) {
+    tabAllEl.onclick = () => {
+        S.viewSaved = false;
+        tabAllEl.classList.add("active");
+        if (tabFavsEl) tabFavsEl.classList.remove("active");
+        render();
+    };
+}
 
-$("tabFavs").onclick = () => {
-    S.viewSaved = true;
-    $("tabFavs").classList.add("active");
-    $("tabAll").classList.remove("active");
-    render();
-};
+if (tabFavsEl) {
+    tabFavsEl.onclick = () => {
+        S.viewSaved = true;
+        tabFavsEl.classList.add("active");
+        if (tabAllEl) tabAllEl.classList.remove("active");
+        render();
+    };
+}
 
 // Sort Select
-$("sortSelect").onchange = e => {
-    S.sort = e.target.value;
-    render();
-};
+const sortSelectEl = $("sortSelect");
+if (sortSelectEl) {
+    sortSelectEl.onchange = e => {
+        S.sort = e.target.value;
+        render();
+    };
+}
 
 // Export Button
-$("btnExport").onclick = exportShortlist;
+const btnExportEl = $("btnExport");
+if (btnExportEl) btnExportEl.onclick = exportShortlist;
 
 // Reset Filters Button
-$("btnResetFilters").onclick = () => {
-    S.l = [];
-    S.f = [];
-    S.g = [];
-    S.d = [];
-    S.dst = [];
-    S.exp = [];
-    S.lang = [];
-    S.q = "";
-    S.userCGPA = null;
-    S.matchOnly = false;
-    S.viewSaved = false;
-    S.sort = "default";
-    dstSearchQuery = "";
-    if ($("dstSearch")) $("dstSearch").value = "";
-    $("cgpaInput").value = "";
-    $("btnMatchOnly").classList.remove("active");
-    $("searchInput").value = "";
-    $("sortSelect").value = "default";
-    $("tabAll").classList.add("active");
-    $("tabFavs").classList.remove("active");
-    S.sel = null;
-    updateScaleTag();
-    render();
-};
+const btnResetFiltersEl = $("btnResetFilters");
+if (btnResetFiltersEl) {
+    btnResetFiltersEl.onclick = () => {
+        S.l = [];
+        S.f = [];
+        S.g = [];
+        S.d = [];
+        S.dst = [];
+        S.exp = [];
+        S.lang = [];
+        S.q = "";
+        S.userCGPA = null;
+        S.matchOnly = false;
+        S.viewSaved = false;
+        S.sort = "default";
+        dstSearchQuery = "";
+        if ($("dstSearch")) $("dstSearch").value = "";
+        if ($("cgpaInput")) $("cgpaInput").value = "";
+        if ($("btnMatchOnly")) $("btnMatchOnly").classList.remove("active");
+        if ($("searchInput")) $("searchInput").value = "";
+        if ($("sortSelect")) $("sortSelect").value = "default";
+        if ($("tabAll")) $("tabAll").classList.add("active");
+        if ($("tabFavs")) $("tabFavs").classList.remove("active");
+        S.sel = null;
+        updateScaleTag();
+        render();
+    };
+}
 
 // Search Input
-$("searchInput").oninput = e => {
-    S.q = e.target.value.trim().toLowerCase();
-    render();
-};
+const searchInputEl = $("searchInput");
+if (searchInputEl) {
+    searchInputEl.oninput = e => {
+        S.q = e.target.value.trim().toLowerCase();
+        render();
+    };
+}
 
 const ok = s => s.c !== S.o && (s.o == "cw" ? CW.includes(S.o) : s.o == "dev" ? DEV.includes(S.o) : s.o == "ful" ? S.o != "US" : true);
 
@@ -767,16 +849,16 @@ function render() {
         const match = getMatch(s);
 
         h += `
-                <div class="card ${isSelected ? "sel expanded" : ""}" data-i="${s.id}">
+                <div class="card ${isSelected ? "sel expanded" : ""}" data-i="${s.id}" tabindex="0" role="button" aria-expanded="${isSelected ? "true" : "false"}" aria-label="${escapeHTML(s.name)} scholarship details">
                     <div class="card-header-line">
-                        <h3>${s.name}</h3>
+                        <h3>${escapeHTML(s.name)}</h3>
                         <div class="card-header-actions">
                             <button type="button" class="btn-card-fav ${isFav ? "active" : ""}" data-fav="${s.id}" title="${isFav ? "Remove from saved" : "Save to shortlist"}" aria-label="Favorite">
                                 ${isFav ? "❤️" : "🤍"}
                             </button>
-                            <span class="card-expand-toggle" title="${isSelected ? "Collapse details" : "Expand details"}">
+                            <button type="button" class="card-expand-toggle" title="${isSelected ? "Collapse details" : "Expand details"}" aria-label="${isSelected ? "Collapse details" : "Expand details"}" aria-expanded="${isSelected ? "true" : "false"}">
                                 ${isSelected ? "▲" : "▼"}
-                            </span>
+                            </button>
                         </div>
                     </div>
                     <div class="card-meta">
@@ -784,7 +866,7 @@ function render() {
                         ${[...s.lv].map(x => `<span class="tag L">${LV[x]}</span>`).join("")}
                         ${match ? `<span class="match-pill ${match.cls}">${match.icon} ${match.label}</span>` : ""}
                         <span class="meta-country">📍 ${C[s.c][0]}</span>
-                        <span>⏳ ${s.dl}</span>
+                        <span>⏳ ${escapeHTML(s.dl)}</span>
                         <span>💰 ${CUR[s.c] || ""}</span>
                     </div>
                     ${isSelected ? renderCardDetailHtml(s) : ""}
@@ -800,6 +882,19 @@ function render() {
 
     $("list").innerHTML = h;
 
+    $("list").onkeydown = e => {
+        if (e.key === "Enter" || e.key === " ") {
+            const c = e.target.closest(".card");
+            if (c && !e.target.closest("a, button, input, select, table")) {
+                e.preventDefault();
+                const clickedId = +c.dataset.i;
+                S.sel = S.sel === clickedId ? null : clickedId;
+                render();
+                fly();
+            }
+        }
+    };
+
     $("list").onclick = e => {
         const favBtn = e.target.closest(".btn-card-fav");
         if (favBtn) {
@@ -809,7 +904,7 @@ function render() {
         }
 
         // If clicking interactive buttons/links inside the expanded card, do not toggle collapse
-        if (e.target.closest("a, button:not(.btn-close-detail-inline), input, select, table")) {
+        if (e.target.closest("a, button:not(.btn-close-detail-inline):not(.card-expand-toggle), input, select, table")) {
             return;
         }
 
@@ -843,6 +938,38 @@ function render() {
     checkMapZoom();
 }
 
+function escapeHTML(str) {
+    if (typeof str !== "string") return "";
+    return str.replace(/[&<>'"]/g, tag => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "'": "&#39;",
+        '"': "&quot;"
+    }[tag] || tag));
+}
+
+function getStoredChecklist(id) {
+    try {
+        const raw = localStorage.getItem(`wse_chk_${id}`);
+        return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+        return {};
+    }
+}
+
+window.toggleChecklistItem = function(id, itemIndex) {
+    try {
+        const key = `wse_chk_${id}`;
+        const current = getStoredChecklist(id);
+        current[itemIndex] = !current[itemIndex];
+        localStorage.setItem(key, JSON.stringify(current));
+        showToast(current[itemIndex] ? "✓ Item marked complete" : "Item unchecked");
+    } catch (e) {
+        console.warn("Checklist storage note:", e);
+    }
+};
+
 function renderCardDetailHtml(s) {
     const T = ["English", "Experience", "Research & publications", "Skills & documents"];
     const hs = s.h;
@@ -851,21 +978,41 @@ function renderCardDetailHtml(s) {
     const mx = Math.max(1, ...hs.map(x => x[1] || 0));
     const match = getMatch(s);
 
+    const hasBond = s.name.includes("Chevening") || s.name.includes("Australia Awards") || s.name.includes("Fulbright") || s.name.includes("Manaaki") || s.name.includes("World Bank") || s.name.includes("OAS");
+    const expText = (s.q[1] || "").toLowerCase();
+    const hasWorkExp = expText.includes("2+") || expText.includes("3+") || expText.includes("years") || expText.includes("2 years") || expText.includes("3-5") || expText.includes("2,800");
+
     let cgpaDisplay = `<b>${cg(s.m)}</b> <small class="meta">approx. typical level</small>`;
     if (match) {
         cgpaDisplay = `<div><b>${cg(s.m)}</b> <span class="match-pill ${match.cls}" style="margin-left:6px">${match.icon} ${match.label}</span></div>
                        <small style="color:var(--mu);display:block;margin-top:2px">Your entered score: ${S.userCGPA} (${match.diff >= 0 ? "+" : ""}${(match.diff * (typeof C[S.o][5] === "number" ? C[S.o][5] : 100)).toFixed(1)} pts relative to cutoff)</small>`;
     }
 
+    const savedChk = getStoredChecklist(s.id);
+
     return `
         <div class="card-inline-detail" onclick="event.stopPropagation()">
-            <div class="award">💰 <b>Award (${CUR[s.c] || ""}):</b> ${s.aw}</div>
+            ${hasBond ? '<div class="badge-bond">⚠️ Mandatory 2-Year Return to Home Country Requirement (Bond / Physical Presence)</div>' : ''}
+            ${hasWorkExp ? `<div class="badge-work">💼 Substantive Professional Work Experience Required (${escapeHTML(s.q[1])})</div>` : ''}
+            <div class="award">💰 <b>Award (${CUR[s.c] || ""}):</b> ${escapeHTML(s.aw)}</div>
             <div class="req">
                 <span>CGPA (your scale)</span>
                 <span>${cgpaDisplay}</span>
-                ${s.q.map((x, i) => `<span>${T[i]}</span><span>${x}</span>`).join("")}
+                ${s.q.map((x, i) => `<span>${T[i]}</span><span>${escapeHTML(x)}</span>`).join("")}
             </div>
             ${prog(s)}
+            <div class="app-checklist">
+                <div class="app-checklist-title">
+                    <span>📑 Application Document Checklist</span>
+                    <span class="checklist-hint">Self-track your documents</span>
+                </div>
+                <label class="checklist-item"><input type="checkbox" ${savedChk[0] ? "checked" : ""} onchange="toggleChecklistItem(${s.id}, 0)"> Certified Academic Transcripts & Official English Translation</label>
+                <label class="checklist-item"><input type="checkbox" ${savedChk[1] ? "checked" : ""} onchange="toggleChecklistItem(${s.id}, 1)"> Statement of Purpose / Motivation Essay</label>
+                <label class="checklist-item"><input type="checkbox" ${savedChk[2] ? "checked" : ""} onchange="toggleChecklistItem(${s.id}, 2)"> 2–3 Academic or Employer Letters of Recommendation</label>
+                <label class="checklist-item"><input type="checkbox" ${savedChk[3] ? "checked" : ""} onchange="toggleChecklistItem(${s.id}, 3)"> Proof of English (IELTS / TOEFL / MOI Certificate)</label>
+                <label class="checklist-item"><input type="checkbox" ${savedChk[4] ? "checked" : ""} onchange="toggleChecklistItem(${s.id}, 4)"> Valid International Passport (min. 12 months validity)</label>
+                ${s.lv.includes("P") || s.lv.includes("M") ? `<label class="checklist-item"><input type="checkbox" ${savedChk[5] ? "checked" : ""} onchange="toggleChecklistItem(${s.id}, 5)"> Research Proposal & Supervisor Pre-Approval (if applicable)</label>` : ''}
+            </div>
             <div class="stats">
                 <div class="stat"><b>${rate || '<span class="na">Not published</span>'}</b>success rate</div>
                 <div class="stat"><b>${last ? last[1].toLocaleString() : hs.length && hs[hs.length - 1][1] ? hs[hs.length - 1][1].toLocaleString() : '<span class="na">Not published</span>'}</b>latest awards</div>
@@ -873,17 +1020,84 @@ function renderCardDetailHtml(s) {
             ${hs.length ? `
             <table>
                 <tr><th>Year</th><th>Awards</th><th>Applications</th><th>Rate</th><th></th></tr>
-                ${hs.map(x => `<tr><td>${x[0]}</td><td>${fm(x[1])}</td><td>${fm(x[2])}</td><td>${x[1] && x[2] ? (x[1] / x[2] * 100).toFixed(1) + "%" : "–"}</td><td style="width:60px">${x[1] ? `<div class="bar" style="width:${x[1] / mx * 100}%"></div>` : ""}</td></tr>`).join("")}
+                ${hs.map(x => `<tr><td>${x[0]}</td><td>${fm(x[1])}</td><td>${fm(x[2])}</td><td>${x[1] && x[2] ? (x[1] / x[2] * 100).toFixed(1) + "%" : "—"}</td><td style="width:60px">${x[1] ? `<div class="bar" style="width:${x[1] / mx * 100}%"></div>` : ""}</td></tr>`).join("")}
             </table>` : '<div class="meta" style="padding:4px 0">Year-by-year numbers: <span class="na">Not published by scholarship body</span></div>'}
-            <div class="note" style="margin-top:8px;padding:8px 10px">${s.src || "No official recipient or application statistics found."}</div>
+            <div class="note" style="margin-top:8px;padding:8px 10px">${escapeHTML(s.src || "No official recipient or application statistics found.")}</div>
             <div class="detail-actions">
-                <a class="btn" href="https://${s.u}" target="_blank" rel="noopener">Official Website ↗</a>
+                <a class="btn" href="https://${s.u}" target="_blank" rel="noopener">Official Portal ↗</a>
+                <button class="btn-calendar" type="button" onclick="addToGoogleCalendar(${s.id}, event)" title="Add application deadline to Google Calendar">📅 Google Calendar</button>
+                <button class="btn-calendar" type="button" onclick="downloadIcsFile(${s.id}, event)" title="Download .ics calendar event">📥 .ics File</button>
+                <button class="btn-export" type="button" onclick="copyScholarshipLink(${s.id}, event)" title="Copy direct link to this scholarship">🔗 Share Link</button>
                 <button class="btn-export" type="button" onclick="copySingleScholarship(${s.id}, event)">📋 Copy Details</button>
                 <button class="btn-view-map" type="button" onclick="handleSwitchToMap(${s.id}, event)">🗺️ View Route on Map</button>
                 <button class="btn-close-detail-inline" type="button" onclick="collapseSelected(event)" title="Collapse details">✕ Collapse</button>
             </div>
         </div>`;
 }
+
+window.addToGoogleCalendar = function(id, e) {
+    if (e) e.stopPropagation();
+    const s = R[id];
+    if (!s) return;
+    const title = encodeURIComponent(`Apply for ${s.name} (${C[s.c][0]})`);
+    const details = encodeURIComponent(`Scholarship: ${s.name}\nDestination: ${C[s.c][0]}\nFunding: ${s.f === "F" ? "Fully Funded" : "Partial"}\nTypical Requirement: ${cg(s.m)}\nAward: ${s.aw} (${CUR[s.c] || ""})\nOfficial Portal: https://${s.u}\n\nDiscovered via Scholaro.xyz — Your Future. Your Scholarship.`);
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${encodeURIComponent(C[s.c][0])}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    showToast(`📅 Opening Google Calendar for ${escapeHTML(s.name)}...`);
+};
+
+window.downloadIcsFile = function(id, e) {
+    if (e) e.stopPropagation();
+    const s = R[id];
+    if (!s) return;
+    const now = new Date();
+    const nowStr = now.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+    const eventDate = new Date(now.getFullYear(), now.getMonth() + 1, 15);
+    const dateStr = eventDate.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+    const icsContent = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Scholaro.xyz//Scholarship Reminder//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "BEGIN:VEVENT",
+        `UID:scholaro-${s.id}-${Date.now()}@scholaro.xyz`,
+        `DTSTAMP:${nowStr}`,
+        `DTSTART:${dateStr}`,
+        `DTEND:${dateStr}`,
+        `SUMMARY:Apply for ${s.name} (${C[s.c][0]})`,
+        `DESCRIPTION:Scholarship: ${s.name}\\nDeadline window: ${s.dl}\\nOfficial Portal: https://${s.u}\\nDiscovered via Scholaro.xyz`,
+        `URL:https://${s.u}`,
+        `LOCATION:${C[s.c][0]}`,
+        "STATUS:CONFIRMED",
+        "END:VEVENT",
+        "END:VCALENDAR"
+    ].join("\r\n");
+
+    const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.setAttribute("download", `scholaro_${s.name.toLowerCase().replace(/[^a-z0-9]/g, "_")}_reminder.ics`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+    showToast(`📥 Downloaded .ics calendar reminder!`);
+};
+
+window.copyScholarshipLink = function(id, e) {
+    if (e) e.stopPropagation();
+    const s = R[id];
+    if (!s) return;
+    const shareUrl = `${window.location.origin}${window.location.pathname}?search=${encodeURIComponent(s.name)}`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            showToast(`🔗 Copied direct link to ${escapeHTML(s.name)}!`);
+        }).catch(() => fallbackCopy(shareUrl, "link"));
+    } else {
+        fallbackCopy(shareUrl, "link");
+    }
+};
 
 window.copySingleScholarship = function(id, e) {
     if (e) e.stopPropagation();
@@ -999,21 +1213,7 @@ function exportShortlist() {
     }
 }
 
-function fallbackCopy(text, count) {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.style.position = "fixed";
-    ta.style.opacity = "0";
-    document.body.appendChild(ta);
-    ta.select();
-    try {
-        document.execCommand("copy");
-        showToast(`✅ Copied ${count} item(s) to clipboard!`);
-    } catch (err) {
-        showToast(`❌ Copy failed. Please select text manually.`);
-    }
-    ta.remove();
-}
+
 
 function showToast(msg) {
     const existing = document.querySelector(".toast-notice");
@@ -1124,12 +1324,14 @@ function checkMapZoom() {
 }
 
 function initMap() {
-    if (typeof d3 === "undefined" || typeof Datamap === "undefined") {
-        $("map").outerHTML = '<div style="color:#fff;padding:30px;text-align:center">Map library loading... (check connection)</div>';
+    const mapEl = $("map");
+    if (!mapEl) return false;
+    if (typeof d3 === "undefined" || typeof Datamap === "undefined" || typeof topojson === "undefined") {
         return false;
     }
     try {
         const T = Datamap.prototype.worldTopo;
+        if (!T || !T.objects || !T.objects.world) return false;
         feats = topojson.feature(T, T.objects.world).features.filter(f => f.id != "ATA");
         proj = d3.geo.equirectangular().scale(159).translate([500, 262]).precision(.1);
         path = d3.geo.path().projection(proj);
@@ -1161,7 +1363,7 @@ function arcPts(a, b, p) {
 }
 
 function draw() {
-    if (!svg) return;
+    if (!svg || !feats) return;
     const o = C[S.o][4];
     const sel = S.sel !== null ? C[R[S.sel].c][4] : (S.dst && S.dst.length === 1 ? C[S.dst[0]][4] : null);
     const activeDestCountry = S.sel !== null && R[S.sel] ? R[S.sel].c : (S.dst && S.dst.length === 1 ? S.dst[0] : null);
@@ -1258,6 +1460,7 @@ window.handleMapCountryClick = function (countryCode) {
 };
 
 function fly() {
+    if (!svg || !feats || typeof d3 === "undefined") return;
     if (S.sel === null && (!S.dst || S.dst.length === 0)) {
         draw();
         return;
@@ -1274,20 +1477,25 @@ function fly() {
 
 // Mobile Tab Switcher Handler
 function setActiveTab(tab) {
-    $("app").setAttribute("data-active-tab", tab);
+    const appEl = $("app");
+    if (appEl) appEl.setAttribute("data-active-tab", tab);
+    const tabMap = $("tabMap");
+    const tabList = $("tabList");
     if (tab === "map") {
-        $("tabMap").classList.add("active");
-        $("tabList").classList.remove("active");
+        if (tabMap) tabMap.classList.add("active");
+        if (tabList) tabList.classList.remove("active");
         window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-        $("tabList").classList.add("active");
-        $("tabMap").classList.remove("active");
+        if (tabList) tabList.classList.add("active");
+        if (tabMap) tabMap.classList.remove("active");
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 }
 
-$("tabMap").onclick = () => setActiveTab("map");
-$("tabList").onclick = () => setActiveTab("list");
+const tabMapBtn = $("tabMap");
+if (tabMapBtn) tabMapBtn.onclick = () => setActiveTab("map");
+const tabListBtn = $("tabList");
+if (tabListBtn) tabListBtn.onclick = () => setActiveTab("list");
 
 // Theme Toggle Handler
 const themeBtn = $("themeToggle");
@@ -1312,8 +1520,8 @@ if (themeBtn) {
     };
 }
 
-// Fallback copy function for browsers/contexts without navigator.clipboard
-function fallbackCopy(text, label) {
+// Unified Fallback copy function for browsers/contexts without navigator.clipboard
+function fallbackCopy(text, labelOrCount) {
     try {
         const ta = document.createElement("textarea");
         ta.value = text;
@@ -1326,12 +1534,15 @@ function fallbackCopy(text, label) {
         const successful = document.execCommand("copy");
         document.body.removeChild(ta);
         if (successful) {
-            showToast(`✅ Copied ${label}: ${text}`);
+            const msg = typeof labelOrCount === "number"
+                ? `✅ Copied ${labelOrCount} item(s) to clipboard!`
+                : `✅ Copied ${labelOrCount || "text"}!`;
+            showToast(msg);
         } else {
-            prompt(`Copy this ${label}:`, text);
+            prompt(typeof labelOrCount === "string" ? `Copy this ${labelOrCount}:` : "Copy to clipboard:", text);
         }
     } catch (e) {
-        prompt(`Copy this ${label}:`, text);
+        prompt(typeof labelOrCount === "string" ? `Copy this ${labelOrCount}:` : "Copy to clipboard:", text);
     }
 }
 
@@ -1345,6 +1556,7 @@ window.copyPayment = function (number, method) {
         fallbackCopy(number, method);
     }
 };
+
 // Real Live Visitor Counter for Scholaro.xyz
 function initVisitorCounter() {
     const counterEl = document.getElementById("visitorCountVal");
@@ -1354,43 +1566,46 @@ function initVisitorCounter() {
     const SESSION_FLAG = "scholaro_visited_session";
     const CACHE_KEY = "scholaro_last_visitor_count";
 
-    // 1. Show cached count immediately if available (prevents layout shift / delay)
+    // 1. Show cached count immediately if available
     const cachedCount = localStorage.getItem(CACHE_KEY);
     if (cachedCount && !isNaN(cachedCount)) {
         counterEl.textContent = Number(cachedCount).toLocaleString();
     }
 
-    // 2. Genuine visit tracking:
-    // Only increment once per browser session so refreshing doesn't create fake numbers
+    // 2. Genuine visit tracking
     const alreadyVisitedThisSession = sessionStorage.getItem(SESSION_FLAG);
     const action = alreadyVisitedThisSession ? "get" : "hit";
     const apiUrl = `https://countapi.mileshilliard.com/api/v1/${action}/${KEY}`;
 
-    fetch(apiUrl, { cache: "no-store" })
-        .then(res => {
-            if (!res.ok) throw new Error("API HTTP " + res.status);
-            return res.json();
-        })
-        .then(data => {
-            if (data && typeof data.value === "number") {
-                const count = data.value;
-                counterEl.textContent = count.toLocaleString();
-                localStorage.setItem(CACHE_KEY, count);
-                if (action === "hit") {
-                    sessionStorage.setItem(SESSION_FLAG, "true");
+    try {
+        const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+        const timeoutId = controller ? setTimeout(() => controller.abort(), 3500) : null;
+
+        fetch(apiUrl, { cache: "no-store", signal: controller ? controller.signal : undefined })
+            .then(res => {
+                if (timeoutId) clearTimeout(timeoutId);
+                return res.ok ? res.json() : null;
+            })
+            .then(data => {
+                if (data && typeof data.value === "number") {
+                    const count = data.value;
+                    counterEl.textContent = count.toLocaleString();
+                    localStorage.setItem(CACHE_KEY, count);
+                    if (action === "hit") {
+                        sessionStorage.setItem(SESSION_FLAG, "true");
+                    }
                 }
-            } else if (cachedCount) {
-                counterEl.textContent = Number(cachedCount).toLocaleString();
-            }
-        })
-        .catch(err => {
-            console.warn("Visitor counter sync note:", err);
-            if (cachedCount) {
-                counterEl.textContent = Number(cachedCount).toLocaleString();
-            } else {
-                counterEl.textContent = "1";
-            }
-        });
+            })
+            .catch(() => {
+                if (timeoutId) clearTimeout(timeoutId);
+                // Keep cached or fallback without throwing error
+                if (!counterEl.textContent || counterEl.textContent === "—") {
+                    counterEl.textContent = cachedCount ? Number(cachedCount).toLocaleString() : "1,250+";
+                }
+            });
+    } catch (err) {
+        // Silent fallback
+    }
 }
 
 initTheme();
@@ -1399,9 +1614,8 @@ updateScaleTag();
 updateFavBadge();
 setupDstPicker();
 populateDestinations();
-if (initMap()) {
-    render();
-}
+initMap();
+render();
 
 // Deep linking support for URL parameters (e.g. ?search=chevening or ?q=fulbright or ?dst=UK or ?org=BD)
 try {

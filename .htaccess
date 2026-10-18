@@ -1,0 +1,69 @@
+# ==============================================================================
+# Scholaro.xyz — LiteSpeed / Apache Server Configuration
+# High Performance, Compression, Security Headers, and Mobile Network Fixes
+# ==============================================================================
+
+# 1. Custom Error Pages
+ErrorDocument 404 /404.html
+
+# 2. Force HTTPS & Canonical Host
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirect HTTP to HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Optional: Redirect non-www to canonical domain if desired
+    # RewriteCond %{HTTP_HOST} ^www\.scholaro\.xyz [NC]
+    # RewriteRule ^(.*)$ https://scholaro.xyz/$1 [L,R=301]
+</IfModule>
+
+# 3. Enable Gzip / Deflate Compression (Crucial for fast mobile 3G/4G/5G load)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+    AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# 4. Browser Caching Rules (Instant reload on repeat mobile visits)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # HTML: Cache for 10 minutes to allow swift updates
+    ExpiresByType text/html "access plus 600 seconds"
+
+    # CSS & JavaScript
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+
+    # Images and Media
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+# 5. Enterprise Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>
+
+# 6. Correct MIME Types
+<IfModule mod_mime.c>
+    AddType text/html .html
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType image/svg+xml .svg
+    AddType image/webp .webp
+    AddType application/json .json
+    AddType application/xml .xml
+</IfModule>

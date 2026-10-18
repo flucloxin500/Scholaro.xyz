@@ -1209,6 +1209,117 @@
             cursor: pointer;
         }
 
+        /* Deadline Calendar & Share Buttons */
+        .btn-calendar {
+            background: var(--card-bg);
+            border: 1px solid var(--ln);
+            color: var(--tx);
+            padding: 8px 13px;
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.18s ease;
+            white-space: nowrap;
+        }
+
+        .btn-calendar:hover {
+            background: rgba(37, 99, 235, 0.1);
+            border-color: var(--ac);
+            color: var(--ac);
+            transform: translateY(-1px);
+        }
+
+        /* Return Home & Work Experience Badges */
+        .badge-bond {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 11.5px;
+            font-weight: 700;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .badge-work {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 11.5px;
+            font-weight: 700;
+            background: rgba(14, 165, 233, 0.1);
+            color: #0284c7;
+            border: 1px solid rgba(14, 165, 233, 0.25);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        /* Interactive Document Readiness Checklist */
+        .app-checklist {
+            background: var(--pn);
+            border: 1px solid var(--ln);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            margin: 12px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .app-checklist-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--tx);
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .checklist-hint {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--mu);
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            color: var(--tx-sub);
+            cursor: pointer;
+            padding: 3px 0;
+            user-select: none;
+            transition: color 0.15s ease;
+        }
+
+        .checklist-item:hover {
+            color: var(--tx);
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: var(--ac);
+            flex-shrink: 0;
+        }
+
         .prg {
             background: var(--pn);
             border: 1px solid var(--ln);
@@ -1292,13 +1403,13 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
             border-radius: 6px;
             border: 1px solid var(--ln);
             background: var(--pn);
             color: var(--mu);
-            font-size: 10px;
+            font-size: 11px;
             cursor: pointer;
             transition: all 0.15s ease;
             user-select: none;
@@ -1616,6 +1727,64 @@
                 justify-content: flex-start;
                 gap: 16px;
             }
+
+            .detail-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .detail-actions a.btn {
+                grid-column: 1 / -1;
+                justify-content: center;
+                min-height: 42px;
+            }
+
+            .detail-actions button {
+                justify-content: center;
+                min-height: 40px;
+                font-size: 11.5px;
+                padding: 8px 10px;
+                width: 100%;
+            }
+
+            .detail-actions .btn-close-detail-inline {
+                grid-column: 1 / -1;
+            }
+
+            .card-meta {
+                gap: 5px;
+                font-size: 11.5px;
+            }
+
+            .card-header-line h3 {
+                font-size: 15px;
+                word-break: break-word;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .detail-actions {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .detail-actions a.btn,
+            .detail-actions button {
+                width: 100%;
+            }
+
+            .pane-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
         }
 
         /* Scholaro Brand & Domain Highlight */
@@ -1672,7 +1841,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #f59e0b, #ec4899, #f7941d);
+            background: linear-gradient(90deg, #f59e0b, #2563eb, #10b981);
         }
 
         .support-card.highlight-pulse {
@@ -1886,7 +2055,7 @@
             width: 46px;
             height: 46px;
             border-radius: 12px;
-            background: linear-gradient(135deg, var(--ac), #8b5cf6);
+            background: linear-gradient(135deg, var(--ac), #1d4ed8);
             color: #ffffff;
             font-size: 20px;
             font-weight: 800;
@@ -2091,7 +2260,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #f59e0b, #ec4899, #f7941d);
+            background: linear-gradient(90deg, #f59e0b, #2563eb, #10b981);
         }
 
         .modal-close {
@@ -2812,4 +2981,103 @@
         justify-content: center;
     }
 }
+
+/* ==========================================================================
+   Breadcrumbs & Internal Links Navigation
+   ========================================================================== */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--mu);
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.breadcrumbs a {
+    color: var(--tx-sub);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.18s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--ac);
+    text-decoration: underline;
+}
+
+.breadcrumbs-sep {
+    color: var(--mu);
+    opacity: 0.6;
+    font-size: 11px;
+}
+
+.breadcrumbs-current {
+    color: var(--tx);
+    font-weight: 700;
+}
+
+.site-footer-nav {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--ln);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 12.5px;
+    color: var(--tx-sub);
+}
+
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.footer-link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-link-title {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: var(--tx);
+    letter-spacing: -0.01em;
+}
+
+.footer-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links-list a {
+    color: var(--tx-sub);
+    text-decoration: none;
+    transition: color 0.18s ease;
+}
+
+.footer-links-list a:hover {
+    color: var(--ac);
+    text-decoration: underline;
+}
+
+.footer-bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--ln-light);
+    font-size: 11.5px;
+    color: var(--mu);
+}
+
 

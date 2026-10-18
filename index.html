@@ -10,13 +10,20 @@
     <meta name="author" content="Walid Bin Mohammed (mrwalid.me)">
     <link rel="canonical" href="https://scholaro.xyz/">
 
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://scholaro.xyz/">
     <meta property="og:title" content="Scholaro — Verified Global Government Scholarships & Eligibility Explorer">
     <meta property="og:description"
         content="Explore verified global government scholarships, calculate academic CGPA eligibility, and visualize interactive flight routes on Scholaro.xyz.">
-    <meta property="og:image" content="https://scholaro.xyz/1.png">
+    <meta property="og:image" content="https://scholaro.xyz/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://scholaro.xyz/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"
+        content="Scholaro.xyz — Verified Global Government Scholarships & Eligibility Explorer">
     <meta property="og:site_name" content="Scholaro.xyz">
 
     <!-- Twitter -->
@@ -24,30 +31,74 @@
     <meta name="twitter:title" content="Scholaro — Verified Global Government Scholarships & Eligibility Explorer">
     <meta name="twitter:description"
         content="Explore verified global government scholarships, calculate academic CGPA eligibility, and visualize interactive flight routes on Scholaro.xyz.">
-    <meta name="twitter:image" content="https://scholaro.xyz/1.png">
+    <meta name="twitter:image" content="https://scholaro.xyz/og-image.jpg">
+    <meta name="twitter:image:alt"
+        content="Scholaro.xyz — Verified Global Government Scholarships & Eligibility Explorer">
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Structured Data (JSON-LD) with Business Schema & Breadcrumbs -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Scholaro",
-      "url": "https://scholaro.xyz/",
-      "description": "Global government scholarship directory, CGPA eligibility calculator, and route projection platform.",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://scholaro.xyz/?search={search_term_string}",
-        "query-input": "required name=search_term_string"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Scholaro",
+        "url": "https://scholaro.xyz/",
+        "description": "Global government scholarship directory, CGPA eligibility calculator, and route projection platform.",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://scholaro.xyz/?search={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Scholaro",
+        "alternateName": "Scholaro.xyz",
+        "url": "https://scholaro.xyz/",
+        "logo": "https://scholaro.xyz/1.png",
+        "image": "https://scholaro.xyz/og-image.jpg",
+        "description": "Directory of verified global government scholarships, CGPA requirements, flight paths, and application criteria.",
+        "founder": {
+          "@type": "Person",
+          "name": "Walid Bin Mohammed",
+          "url": "https://mrwalid.me",
+          "sameAs": [
+            "https://mrwalid.me",
+            "https://www.linkedin.com/in/Walid Bin Mohammed-Walid Bin Mohammed-0272781b5/?isSelfProfile=true",
+            "https://www.facebook.com/ErrorOwner/",
+            "https://www.instagram.com/error__owner"
+          ]
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Creator Support",
+          "url": "https://scholaro.xyz/coffee.html"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://scholaro.xyz/"
+          }
+        ]
       }
-    }
+    ]
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/png" href="1.png">
-    <link rel="apple-touch-icon" href="1.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="1.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style.css">
     <meta name="theme-color" content="#f6f8fc">
     <script>
@@ -64,17 +115,22 @@
     <div class="app" id="app" data-active-tab="map">
         <!-- LEFT COLUMN: Map + Route Info + Filter Components -->
         <div class="left-pane" id="leftPane">
+            <!-- Breadcrumbs -->
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <span class="breadcrumbs-current">Home (Scholarship Explorer)</span>
+            </nav>
+
             <div class="pane-header">
                 <div class="brand">
                     <h1 class="brand-title">
-                        <img src="1.png" alt="Scholaro Logo" class="brand-logo-img">
+                        <img src="1.png" alt="Scholaro — Verified Global Government Scholarships Logo"
+                            class="brand-logo-img" width="28" height="28">
                         <span>Scholaro<span class="brand-domain">.xyz</span></span>
                     </h1>
                     <div class="brand-sub">Your Future. Your Scholarship.</div>
                 </div>
                 <div class="header-actions">
-                    <div class="visitor-counter-pill" id="visitorCounter"
-                        title="Real verified visits to Scholaro.xyz">
+                    <div class="visitor-counter-pill" id="visitorCounter" title="Real verified visits to Scholaro.xyz">
                         <span class="visitor-pulse-dot" aria-hidden="true"></span>
                         <span class="visitor-label">Visits</span>
                         <span class="visitor-count-text" id="visitorCountVal">—</span>
@@ -95,7 +151,8 @@
                     style="display:none">
                     🌍 View Full Map
                 </button>
-                <svg id="map"></svg>
+                <svg id="map" role="img"
+                    aria-label="Interactive world map showing verified global scholarship destinations and flight routes"></svg>
             </div>
 
             <!-- Flight & Distance Info Banner -->
@@ -121,7 +178,56 @@
                         <span class="field-label-tag">Citizenship</span>
                     </label>
                     <div class="select-wrapper">
-                        <select id="org" aria-label="Your country of origin"></select>
+                        <select id="org" aria-label="Your country of origin">
+                            <option value="AU">Australia</option>
+                            <option value="AT">Austria</option>
+                            <option value="AZ">Azerbaijan</option>
+                            <option value="BD" selected>Bangladesh</option>
+                            <option value="BE">Belgium</option>
+                            <option value="BR">Brazil</option>
+                            <option value="CA">Canada</option>
+                            <option value="CN">China</option>
+                            <option value="CO">Colombia</option>
+                            <option value="DK">Denmark</option>
+                            <option value="EG">Egypt</option>
+                            <option value="EE">Estonia</option>
+                            <option value="FI">Finland</option>
+                            <option value="FR">France</option>
+                            <option value="DE">Germany</option>
+                            <option value="GH">Ghana</option>
+                            <option value="HK">Hong Kong</option>
+                            <option value="HU">Hungary</option>
+                            <option value="IN">India</option>
+                            <option value="ID">Indonesia</option>
+                            <option value="IE">Ireland</option>
+                            <option value="IT">Italy</option>
+                            <option value="JP">Japan</option>
+                            <option value="KE">Kenya</option>
+                            <option value="MY">Malaysia</option>
+                            <option value="MX">Mexico</option>
+                            <option value="NP">Nepal</option>
+                            <option value="NL">Netherlands</option>
+                            <option value="NZ">New Zealand</option>
+                            <option value="NG">Nigeria</option>
+                            <option value="PK">Pakistan</option>
+                            <option value="PH">Philippines</option>
+                            <option value="PL">Poland</option>
+                            <option value="QA">Qatar</option>
+                            <option value="RU">Russia</option>
+                            <option value="SA">Saudi Arabia</option>
+                            <option value="SG">Singapore</option>
+                            <option value="ZA">South Africa</option>
+                            <option value="KR">South Korea</option>
+                            <option value="LK">Sri Lanka</option>
+                            <option value="SE">Sweden</option>
+                            <option value="CH">Switzerland</option>
+                            <option value="TW">Taiwan</option>
+                            <option value="TR">Türkiye</option>
+                            <option value="AE">United Arab Emirates</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="US">United States</option>
+                            <option value="VN">Vietnam</option>
+                    </select>
                         <div class="select-arrow">▼</div>
                     </div>
                 </div>
@@ -134,7 +240,7 @@
                     </label>
                     <div class="cgpa-input-row">
                         <input type="number" id="cgpaInput" class="cgpa-input" step="0.01" min="0"
-                            placeholder="e.g. 3.50">
+                            placeholder="Enter your CGPA (e.g. 3.50)">
                         <button type="button" class="btn-match-toggle" id="btnMatchOnly"
                             title="Filter to show only scholarships where you meet typical requirement">🎯 Eligible
                             Only</button>
@@ -147,7 +253,7 @@
                         <span>Degree Level</span>
                         <span class="field-label-tag" id="lvlTag">Multi-select</span>
                     </label>
-                    <div class="chips" id="lvl"></div>
+                    <div class="chips" id="lvl"><button type="button" class="chip on" data-v="">All</button><button type="button" class="chip " data-v="B">Bachelor's</button><button type="button" class="chip " data-v="M">Master's</button><button type="button" class="chip " data-v="P">PhD</button></div>
                 </div>
 
                 <!-- 3. Fund Type -->
@@ -156,7 +262,7 @@
                         <span>Fund Type</span>
                         <span class="field-label-tag" id="fundTag">Multi-select</span>
                     </label>
-                    <div class="chips" id="fund"></div>
+                    <div class="chips" id="fund"><button type="button" class="chip on" data-v="">All</button><button type="button" class="chip " data-v="F">Full-funded</button><button type="button" class="chip " data-v="P">Partial</button></div>
                 </div>
 
                 <!-- 4. Field / Domain of Study -->
@@ -165,7 +271,7 @@
                         <span>Field / Domain of Study</span>
                         <span class="field-label-tag" id="domTag">Multi-select</span>
                     </label>
-                    <div class="chips" id="dom"></div>
+                    <div class="chips" id="dom"><button type="button" class="chip on" data-v="">All</button><button type="button" class="chip " data-v="E">Engineering & Tech</button><button type="button" class="chip " data-v="N">Natural Sciences</button><button type="button" class="chip " data-v="H">Health & Medicine</button><button type="button" class="chip " data-v="B">Business & Economics</button><button type="button" class="chip " data-v="S">Social Sci & Policy</button><button type="button" class="chip " data-v="L">Law</button><button type="button" class="chip " data-v="A">Agriculture & Environment</button><button type="button" class="chip " data-v="U">Arts & Humanities</button></div>
                 </div>
 
                 <!-- 5. Destination Region -->
@@ -174,7 +280,7 @@
                         <span>Destination Region</span>
                         <span class="field-label-tag" id="regTag">Multi-select</span>
                     </label>
-                    <div class="chips" id="reg"></div>
+                    <div class="chips" id="reg"><button type="button" class="chip on" data-v="">All</button><button type="button" class="chip " data-v="Africa">Africa</button><button type="button" class="chip " data-v="Asia">Asia</button><button type="button" class="chip " data-v="Europe">Europe</button><button type="button" class="chip " data-v="Middle East">Middle East</button><button type="button" class="chip " data-v="North America">North America</button><button type="button" class="chip " data-v="Oceania">Oceania</button><button type="button" class="chip " data-v="South America">South America</button></div>
                 </div>
 
                 <!-- 6. Desired Destination Country -->
@@ -213,7 +319,7 @@
                         <span>Work Experience</span>
                         <span class="field-label-tag" id="expTag">Multi-select</span>
                     </label>
-                    <div class="chips" id="expFilter"></div>
+                    <div class="chips" id="expFilter"><button type="button" class="chip on" data-v="">All</button><button type="button" class="chip " data-v="none">2+ Yrs Needed</button><button type="button" class="chip " data-v="req">Work Exp Required</button></div>
                 </div>
 
                 <!-- 8. Language Requirement -->
@@ -222,7 +328,7 @@
                         <span>Language Requirement</span>
                         <span class="field-label-tag" id="langTag">Multi-select</span>
                     </label>
-                    <div class="chips" id="langFilter"></div>
+                    <div class="chips" id="langFilter"><button type="button" class="chip on" data-v="">All</button><button type="button" class="chip " data-v="exempt">Waiver / MOI OK</button><button type="button" class="chip " data-v="ielts">IELTS Specified</button></div>
                 </div>
             </div>
 
@@ -237,7 +343,7 @@
                 <div class="view-tabs" role="tablist">
                     <button class="view-tab-btn active" id="tabAll" type="button" role="tab" aria-selected="true">
                         <span>All Opportunities</span>
-                        <span class="count-pill" id="cntBadge">0</span>
+                        <span class="count-pill" id="cntBadge">61</span>
                     </button>
                     <button class="view-tab-btn fav-tab" id="tabFavs" type="button" role="tab" aria-selected="false">
                         <span>❤️ Saved</span>
@@ -248,7 +354,7 @@
                     <div class="search-box">
                         <span class="search-icon">🔍</span>
                         <input type="text" id="searchInput" class="search-input"
-                            placeholder="Search by name or country...">
+                            placeholder="Search scholarship name, country, or keyword...">
                     </div>
                     <div class="select-wrapper" style="width:auto">
                         <select id="sortSelect" class="sort-select" aria-label="Sort scholarships">
@@ -269,7 +375,989 @@
             <div id="det" style="display:none"></div>
 
             <!-- List of All Available Scholarships -->
-            <div class="cards-list" id="list"></div>
+            <div class="cards-list" id="list">
+                <div class="rg">ASIA</div>
+                <div class="card" data-i="60" tabindex="0" role="button" aria-expanded="false" aria-label="Heydar Aliyev Grant (Azerbaijan) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Heydar Aliyev Grant (Azerbaijan)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="60" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Azerbaijan</span>
+                        <span>⏳ Feb–Apr</span>
+                        <span>💰 ₼ AZN</span>
+                    </div>
+                </div>
+                <div class="card" data-i="26" tabindex="0" role="button" aria-expanded="false" aria-label="Chinese Govt (CSC) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Chinese Govt (CSC)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="26" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 China</span>
+                        <span>⏳ Dec–Apr</span>
+                        <span>💰 ¥ CNY</span>
+                    </div>
+                </div>
+                <div class="card" data-i="45" tabindex="0" role="button" aria-expanded="false" aria-label="Schwarzman Scholars scholarship details">
+                    <div class="card-header-line">
+                        <h3>Schwarzman Scholars</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="45" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 China</span>
+                        <span>⏳ Apr–Sep</span>
+                        <span>💰 ¥ CNY</span>
+                    </div>
+                </div>
+                <div class="card" data-i="46" tabindex="0" role="button" aria-expanded="false" aria-label="Yenching Academy (PKU) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Yenching Academy (PKU)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="46" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 China</span>
+                        <span>⏳ Aug–Dec</span>
+                        <span>💰 ¥ CNY</span>
+                    </div>
+                </div>
+                <div class="card" data-i="27" tabindex="0" role="button" aria-expanded="false" aria-label="Hong Kong PhD Fellowship (HKPFS) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Hong Kong PhD Fellowship (HKPFS)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="27" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Hong Kong</span>
+                        <span>⏳ Sept–early Dec</span>
+                        <span>💰 HK$ HKD</span>
+                    </div>
+                </div>
+                <div class="card" data-i="49" tabindex="0" role="button" aria-expanded="false" aria-label="ADB - Japan Scholarship (ADB-JSP) scholarship details">
+                    <div class="card-header-line">
+                        <h3>ADB - Japan Scholarship (ADB-JSP)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="49" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Japan</span>
+                        <span>⏳ Nov–Apr (varies by uni)</span>
+                        <span>💰 ¥ JPY</span>
+                    </div>
+                </div>
+                <div class="card" data-i="24" tabindex="0" role="button" aria-expanded="false" aria-label="MEXT (Japan) scholarship details">
+                    <div class="card-header-line">
+                        <h3>MEXT (Japan)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="24" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Japan</span>
+                        <span>⏳ Apr–May (embassy)</span>
+                        <span>💰 ¥ JPY</span>
+                    </div>
+                </div>
+                <div class="card" data-i="25" tabindex="0" role="button" aria-expanded="false" aria-label="GKS (Korea) scholarship details">
+                    <div class="card-header-line">
+                        <h3>GKS (Korea)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="25" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 South Korea</span>
+                        <span>⏳ Feb–Mar (embassy) / Sept (university)</span>
+                        <span>💰 ₩ KRW</span>
+                    </div>
+                </div>
+                <div class="card" data-i="30" tabindex="0" role="button" aria-expanded="false" aria-label="Malaysia International Scholarship (MIS) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Malaysia International Scholarship (MIS)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="30" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Malaysia</span>
+                        <span>⏳ May–Jun</span>
+                        <span>💰 RM MYR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="29" tabindex="0" role="button" aria-expanded="false" aria-label="SINGA (A*STAR) scholarship details">
+                    <div class="card-header-line">
+                        <h3>SINGA (A*STAR)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="29" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Singapore</span>
+                        <span>⏳ Dec / Jun</span>
+                        <span>💰 S$ SGD</span>
+                    </div>
+                </div>
+                <div class="card" data-i="22" tabindex="0" role="button" aria-expanded="false" aria-label="Türkiye Scholarships (Türkiye Burslari) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Türkiye Scholarships (Türkiye Burslari)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="22" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Türkiye</span>
+                        <span>⏳ Jan–Feb</span>
+                        <span>💰 ₺ TRY</span>
+                    </div>
+                </div>
+                <div class="card" data-i="28" tabindex="0" role="button" aria-expanded="false" aria-label="Taiwan ICDF & MOE scholarship details">
+                    <div class="card-header-line">
+                        <h3>Taiwan ICDF & MOE</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="28" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Taiwan</span>
+                        <span>⏳ Jan–Mar</span>
+                        <span>💰 NT$ TWD</span>
+                    </div>
+                </div>
+                <div class="rg">EUROPE</div>
+                <div class="card" data-i="18" tabindex="0" role="button" aria-expanded="false" aria-label="Ernst Mach Grant (Austria) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Ernst Mach Grant (Austria)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="18" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Austria</span>
+                        <span>⏳ Feb–Mar</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="14" tabindex="0" role="button" aria-expanded="false" aria-label="Master Mind Scholarships scholarship details">
+                    <div class="card-header-line">
+                        <h3>Master Mind Scholarships</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="14" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Belgium</span>
+                        <span>⏳ Feb–Apr</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="48" tabindex="0" role="button" aria-expanded="false" aria-label="VLIR-UOS Master's scholarship details">
+                    <div class="card-header-line">
+                        <h3>VLIR-UOS Master's</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="48" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Belgium</span>
+                        <span>⏳ Dec–Feb (per programme)</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="54" tabindex="0" role="button" aria-expanded="false" aria-label="EPFL Master Excellence scholarship details">
+                    <div class="card-header-line">
+                        <h3>EPFL Master Excellence</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="54" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Switzerland</span>
+                        <span>⏳ Dec / Mar</span>
+                        <span>💰 CHF</span>
+                    </div>
+                </div>
+                <div class="card" data-i="53" tabindex="0" role="button" aria-expanded="false" aria-label="ETH Zurich ESOP scholarship details">
+                    <div class="card-header-line">
+                        <h3>ETH Zurich ESOP</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="53" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Switzerland</span>
+                        <span>⏳ Nov–Dec</span>
+                        <span>💰 CHF</span>
+                    </div>
+                </div>
+                <div class="card" data-i="15" tabindex="0" role="button" aria-expanded="false" aria-label="Swiss Government Excellence scholarship details">
+                    <div class="card-header-line">
+                        <h3>Swiss Government Excellence</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="15" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Switzerland</span>
+                        <span>⏳ Sept–Nov (via Swiss embassy)</span>
+                        <span>💰 CHF</span>
+                    </div>
+                </div>
+                <div class="card" data-i="7" tabindex="0" role="button" aria-expanded="false" aria-label="DAAD Scholarships (EPOS & Research Grants) scholarship details">
+                    <div class="card-header-line">
+                        <h3>DAAD Scholarships (EPOS & Research Grants)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="7" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Germany</span>
+                        <span>⏳ Aug–Oct</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="52" tabindex="0" role="button" aria-expanded="false" aria-label="Danish State Scholarships scholarship details">
+                    <div class="card-header-line">
+                        <h3>Danish State Scholarships</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="52" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Denmark</span>
+                        <span>⏳ Jan–Mar (via university)</span>
+                        <span>💰 kr DKK</span>
+                    </div>
+                </div>
+                <div class="card" data-i="51" tabindex="0" role="button" aria-expanded="false" aria-label="Estonian Government Scholarships scholarship details">
+                    <div class="card-header-line">
+                        <h3>Estonian Government Scholarships</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="51" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Estonia</span>
+                        <span>⏳ Mar–Apr</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="8" tabindex="0" role="button" aria-expanded="false" aria-label="Erasmus Mundus Joint Masters scholarship details">
+                    <div class="card-header-line">
+                        <h3>Erasmus Mundus Joint Masters</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="8" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 EU (multi-country)</span>
+                        <span>⏳ Oct–Feb (per programme)</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="17" tabindex="0" role="button" aria-expanded="false" aria-label="Finland Scholarships (EDUFI) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Finland Scholarships (EDUFI)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="17" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Finland</span>
+                        <span>⏳ Jan (Joint Application)</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="9" tabindex="0" role="button" aria-expanded="false" aria-label="Eiffel Excellence scholarship details">
+                    <div class="card-header-line">
+                        <h3>Eiffel Excellence</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="9" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 France</span>
+                        <span>⏳ Dec–Jan (via French institution)</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="19" tabindex="0" role="button" aria-expanded="false" aria-label="Stipendium Hungaricum scholarship details">
+                    <div class="card-header-line">
+                        <h3>Stipendium Hungaricum</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="19" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Hungary</span>
+                        <span>⏳ Nov–Jan (via national authority)</span>
+                        <span>💰 HUF</span>
+                    </div>
+                </div>
+                <div class="card" data-i="13" tabindex="0" role="button" aria-expanded="false" aria-label="Govt of Ireland International (GOI-IES) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Govt of Ireland International (GOI-IES)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="13" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Ireland</span>
+                        <span>⏳ Feb–Mar</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="12" tabindex="0" role="button" aria-expanded="false" aria-label="Govt of Ireland Postgraduate (GOIPG) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Govt of Ireland Postgraduate (GOIPG)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="12" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Ireland</span>
+                        <span>⏳ Sept–Oct</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="11" tabindex="0" role="button" aria-expanded="false" aria-label="DSU Regional Grants (Italy) scholarship details">
+                    <div class="card-header-line">
+                        <h3>DSU Regional Grants (Italy)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="11" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Italy</span>
+                        <span>⏳ Jul–Sept (per region)</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="10" tabindex="0" role="button" aria-expanded="false" aria-label="Italian Govt MAECI scholarship details">
+                    <div class="card-header-line">
+                        <h3>Italian Govt MAECI</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="10" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Italy</span>
+                        <span>⏳ May–Jun</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="59" tabindex="0" role="button" aria-expanded="false" aria-label="Amsterdam Merit (AMS) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Amsterdam Merit (AMS)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="59" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Netherlands</span>
+                        <span>⏳ Jan–Feb</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="20" tabindex="0" role="button" aria-expanded="false" aria-label="Holland Scholarship scholarship details">
+                    <div class="card-header-line">
+                        <h3>Holland Scholarship</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="20" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag P">Partial</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Netherlands</span>
+                        <span>⏳ Feb–May</span>
+                        <span>💰 € EUR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="21" tabindex="0" role="button" aria-expanded="false" aria-label="Stefan Banach (Poland) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Stefan Banach (Poland)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="21" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Poland</span>
+                        <span>⏳ May–Jun</span>
+                        <span>💰 zł PLN</span>
+                    </div>
+                </div>
+                <div class="card" data-i="23" tabindex="0" role="button" aria-expanded="false" aria-label="Russian Govt Quota scholarship details">
+                    <div class="card-header-line">
+                        <h3>Russian Govt Quota</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="23" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Russia</span>
+                        <span>⏳ Nov–Feb</span>
+                        <span>💰 ₽ RUB</span>
+                    </div>
+                </div>
+                <div class="card" data-i="16" tabindex="0" role="button" aria-expanded="false" aria-label="Swedish Institute Global Professionals scholarship details">
+                    <div class="card-header-line">
+                        <h3>Swedish Institute Global Professionals</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="16" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Sweden</span>
+                        <span>⏳ Jan–Feb</span>
+                        <span>💰 SEK</span>
+                    </div>
+                </div>
+                <div class="card" data-i="50" tabindex="0" role="button" aria-expanded="false" aria-label="Boustany MBA & Master's scholarship details">
+                    <div class="card-header-line">
+                        <h3>Boustany MBA & Master's</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="50" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 United Kingdom</span>
+                        <span>⏳ May (alternate years)</span>
+                        <span>💰 £ GBP</span>
+                    </div>
+                </div>
+                <div class="card" data-i="0" tabindex="0" role="button" aria-expanded="false" aria-label="Chevening scholarship details">
+                    <div class="card-header-line">
+                        <h3>Chevening</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="0" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 United Kingdom</span>
+                        <span>⏳ Aug–early Oct/Nov</span>
+                        <span>💰 £ GBP</span>
+                    </div>
+                </div>
+                <div class="card" data-i="5" tabindex="0" role="button" aria-expanded="false" aria-label="Clarendon (Oxford) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Clarendon (Oxford)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="5" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 United Kingdom</span>
+                        <span>⏳ Jan (with course application)</span>
+                        <span>💰 £ GBP</span>
+                    </div>
+                </div>
+                <div class="card" data-i="2" tabindex="0" role="button" aria-expanded="false" aria-label="Commonwealth Master's scholarship details">
+                    <div class="card-header-line">
+                        <h3>Commonwealth Master's</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="2" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 United Kingdom</span>
+                        <span>⏳ Oct–Dec (via nominating agency)</span>
+                        <span>💰 £ GBP</span>
+                    </div>
+                </div>
+                <div class="card" data-i="3" tabindex="0" role="button" aria-expanded="false" aria-label="Commonwealth PhD Scholarships scholarship details">
+                    <div class="card-header-line">
+                        <h3>Commonwealth PhD Scholarships</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="3" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">PhD</span>
+                        <span class="meta-country">📍 United Kingdom</span>
+                        <span>⏳ Sept–Nov (via nominating agency)</span>
+                        <span>💰 £ GBP</span>
+                    </div>
+                </div>
+                <div class="card" data-i="4" tabindex="0" role="button" aria-expanded="false" aria-label="Gates Cambridge scholarship details">
+                    <div class="card-header-line">
+                        <h3>Gates Cambridge</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="4" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 United Kingdom</span>
+                        <span>⏳ Oct (US) / early Dec (international)</span>
+                        <span>💰 £ GBP</span>
+                    </div>
+                </div>
+                <div class="card" data-i="6" tabindex="0" role="button" aria-expanded="false" aria-label="GREAT Scholarships scholarship details">
+                    <div class="card-header-line">
+                        <h3>GREAT Scholarships</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="6" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag P">Partial</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 United Kingdom</span>
+                        <span>⏳ Varies by university</span>
+                        <span>💰 £ GBP</span>
+                    </div>
+                </div>
+                <div class="card" data-i="1" tabindex="0" role="button" aria-expanded="false" aria-label="Rhodes Scholarship scholarship details">
+                    <div class="card-header-line">
+                        <h3>Rhodes Scholarship</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="1" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 United Kingdom</span>
+                        <span>⏳ Jul–Oct</span>
+                        <span>💰 £ GBP</span>
+                    </div>
+                </div>
+                <div class="card" data-i="47" tabindex="0" role="button" aria-expanded="false" aria-label="Rotary Peace Fellowship scholarship details">
+                    <div class="card-header-line">
+                        <h3>Rotary Peace Fellowship</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="47" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 United Kingdom</span>
+                        <span>⏳ Feb–May</span>
+                        <span>💰 £ GBP</span>
+                    </div>
+                </div>
+                <div class="rg">MIDDLE EAST</div>
+                <div class="card" data-i="32" tabindex="0" role="button" aria-expanded="false" aria-label="MBZUAI Full Scholarship scholarship details">
+                    <div class="card-header-line">
+                        <h3>MBZUAI Full Scholarship</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="32" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 United Arab Emirates</span>
+                        <span>⏳ Dec–Feb</span>
+                        <span>💰 AED</span>
+                    </div>
+                </div>
+                <div class="card" data-i="33" tabindex="0" role="button" aria-expanded="false" aria-label="Qatar University & HBKU scholarship details">
+                    <div class="card-header-line">
+                        <h3>Qatar University & HBKU</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="33" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Qatar</span>
+                        <span>⏳ Jan–Mar</span>
+                        <span>💰 QAR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="31" tabindex="0" role="button" aria-expanded="false" aria-label="KAUST Fellowship scholarship details">
+                    <div class="card-header-line">
+                        <h3>KAUST Fellowship</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="31" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Saudi Arabia</span>
+                        <span>⏳ Dec–Jan</span>
+                        <span>💰 SAR</span>
+                    </div>
+                </div>
+                <div class="card" data-i="55" tabindex="0" role="button" aria-expanded="false" aria-label="KFUPM Graduate Fellowship scholarship details">
+                    <div class="card-header-line">
+                        <h3>KFUPM Graduate Fellowship</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="55" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Saudi Arabia</span>
+                        <span>⏳ Dec–Jan / Jun</span>
+                        <span>💰 SAR</span>
+                    </div>
+                </div>
+                <div class="rg">NORTH AMERICA</div>
+                <div class="card" data-i="38" tabindex="0" role="button" aria-expanded="false" aria-label="Lester B. Pearson (UofT) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Lester B. Pearson (UofT)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="38" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span>
+                        <span class="meta-country">📍 Canada</span>
+                        <span>⏳ Nov–Dec (school nomination)</span>
+                        <span>💰 C$ CAD</span>
+                    </div>
+                </div>
+                <div class="card" data-i="39" tabindex="0" role="button" aria-expanded="false" aria-label="McCall MacBain (McGill) scholarship details">
+                    <div class="card-header-line">
+                        <h3>McCall MacBain (McGill)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="39" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 Canada</span>
+                        <span>⏳ Aug (Intl) / Sept (US/CA)</span>
+                        <span>💰 C$ CAD</span>
+                    </div>
+                </div>
+                <div class="card" data-i="40" tabindex="0" role="button" aria-expanded="false" aria-label="Vanier CGS (Canada) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Vanier CGS (Canada)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="40" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Canada</span>
+                        <span>⏳ Nov (university nomination)</span>
+                        <span>💰 C$ CAD</span>
+                    </div>
+                </div>
+                <div class="card" data-i="57" tabindex="0" role="button" aria-expanded="false" aria-label="AMEXCID Excellence (Mexico) scholarship details">
+                    <div class="card-header-line">
+                        <h3>AMEXCID Excellence (Mexico)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="57" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Bachelor's</span><span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Mexico</span>
+                        <span>⏳ Jun–Jul</span>
+                        <span>💰 MX$ MXN</span>
+                    </div>
+                </div>
+                <div class="card" data-i="34" tabindex="0" role="button" aria-expanded="false" aria-label="Fulbright Foreign Student scholarship details">
+                    <div class="card-header-line">
+                        <h3>Fulbright Foreign Student</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="34" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 United States</span>
+                        <span>⏳ Varies by country</span>
+                        <span>💰 US$</span>
+                    </div>
+                </div>
+                <div class="card" data-i="37" tabindex="0" role="button" aria-expanded="false" aria-label="Humphrey Fellowship (USA) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Humphrey Fellowship (USA)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="37" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">PhD</span>
+                        <span class="meta-country">📍 United States</span>
+                        <span>⏳ Apr–Sept</span>
+                        <span>💰 US$</span>
+                    </div>
+                </div>
+                <div class="card" data-i="36" tabindex="0" role="button" aria-expanded="false" aria-label="Joint Japan/World Bank (JJ/WBGSP) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Joint Japan/World Bank (JJ/WBGSP)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="36" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span>
+                        <span class="meta-country">📍 United States</span>
+                        <span>⏳ Mar–May</span>
+                        <span>💰 US$</span>
+                    </div>
+                </div>
+                <div class="card" data-i="35" tabindex="0" role="button" aria-expanded="false" aria-label="Knight-Hennessy (Stanford) scholarship details">
+                    <div class="card-header-line">
+                        <h3>Knight-Hennessy (Stanford)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="35" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 United States</span>
+                        <span>⏳ Early Oct</span>
+                        <span>💰 US$</span>
+                    </div>
+                </div>
+                <div class="card" data-i="58" tabindex="0" role="button" aria-expanded="false" aria-label="OAS Academic Scholarships scholarship details">
+                    <div class="card-header-line">
+                        <h3>OAS Academic Scholarships</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="58" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 United States</span>
+                        <span>⏳ Mar–Apr</span>
+                        <span>💰 US$</span>
+                    </div>
+                </div>
+                <div class="rg">OCEANIA</div>
+                <div class="card" data-i="42" tabindex="0" role="button" aria-expanded="false" aria-label="Australia Awards scholarship details">
+                    <div class="card-header-line">
+                        <h3>Australia Awards</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="42" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Australia</span>
+                        <span>⏳ Feb–Apr</span>
+                        <span>💰 A$ AUD</span>
+                    </div>
+                </div>
+                <div class="card" data-i="41" tabindex="0" role="button" aria-expanded="false" aria-label="Australian Government RTP scholarship details">
+                    <div class="card-header-line">
+                        <h3>Australian Government RTP</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="41" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Australia</span>
+                        <span>⏳ Aug–Oct (main round)</span>
+                        <span>💰 A$ AUD</span>
+                    </div>
+                </div>
+                <div class="card" data-i="43" tabindex="0" role="button" aria-expanded="false" aria-label="University Merit Awards (Australia) scholarship details">
+                    <div class="card-header-line">
+                        <h3>University Merit Awards (Australia)</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="43" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag P">Partial</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 Australia</span>
+                        <span>⏳ Varies</span>
+                        <span>💰 A$ AUD</span>
+                    </div>
+                </div>
+                <div class="card" data-i="44" tabindex="0" role="button" aria-expanded="false" aria-label="Manaaki New Zealand scholarship details">
+                    <div class="card-header-line">
+                        <h3>Manaaki New Zealand</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="44" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">Master's</span><span class="tag L">PhD</span>
+                        <span class="meta-country">📍 New Zealand</span>
+                        <span>⏳ Feb–Mar</span>
+                        <span>💰 NZ$</span>
+                    </div>
+                </div>
+                <div class="card" data-i="56" tabindex="0" role="button" aria-expanded="false" aria-label="NZIDRS Doctoral Award scholarship details">
+                    <div class="card-header-line">
+                        <h3>NZIDRS Doctoral Award</h3>
+                        <div class="card-header-actions">
+                            <button type="button" class="btn-card-fav" data-fav="56" title="Save to shortlist" aria-label="Favorite">🤍</button>
+                            <button type="button" class="card-expand-toggle" title="Expand details" aria-label="Expand details" aria-expanded="false">▼</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag F">Fully Funded</span>
+                        <span class="tag L">PhD</span>
+                        <span class="meta-country">📍 New Zealand</span>
+                        <span>⏳ Jun–Jul</span>
+                        <span>💰 NZ$</span>
+                    </div>
+                </div>
+            </div>
 
             <!-- Footnote / Sources -->
             <div class="note">
@@ -278,6 +1366,50 @@
                 shown rather than guessing. CGPA values are approximate conversions onto your country's grading scale,
                 not strict cut-offs. Stipend amounts change yearly — always confirm current terms on the official site.
             </div>
+
+            <!-- Internal Links & Directory Navigation -->
+            <footer class="site-footer-nav" role="contentinfo">
+                <div class="footer-links-grid">
+                    <div class="footer-link-group">
+                        <div class="footer-link-title">Popular Destinations</div>
+                        <ul class="footer-links-list">
+                            <li><a href="?dst=UK">United Kingdom Scholarships</a></li>
+                            <li><a href="?dst=US">United States Scholarships</a></li>
+                            <li><a href="?dst=DE">Germany DAAD & EPOS</a></li>
+                            <li><a href="?dst=JP">Japan MEXT Government Grants</a></li>
+                            <li><a href="?dst=KR">South Korea GKS / KGSP</a></li>
+                            <li><a href="?dst=CA">Canada Vanier & Pearson</a></li>
+                            <li><a href="?dst=AU">Australia Awards & RTP</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-group">
+                        <div class="footer-link-title">Flagship Scholarships</div>
+                        <ul class="footer-links-list">
+                            <li><a href="?search=chevening">Chevening Scholarship (UK)</a></li>
+                            <li><a href="?search=fulbright">Fulbright Foreign Student (USA)</a></li>
+                            <li><a href="?search=daad">DAAD EPOS Grants (Germany)</a></li>
+                            <li><a href="?search=mext">MEXT Japanese Embassy Route</a></li>
+                            <li><a href="?search=gks">GKS Korean Government Scholarship</a></li>
+                            <li><a href="?search=erasmus">Erasmus Mundus Joint Masters (EU)</a></li>
+                            <li><a href="?search=rhodes">Rhodes Scholarship (Oxford)</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-group">
+                        <div class="footer-link-title">Scholaro Resources</div>
+                        <ul class="footer-links-list">
+                            <li><a href="index.html">Scholarship Route Explorer</a></li>
+                            <li><a href="coffee.html">Support Creator & Tamarind Tea 🍵</a></li>
+                            <li><a href="404.html">Destination Radar 404</a></li>
+                            <li><a href="https://mrwalid.me" target="_blank" rel="noopener">Founder: Walid Bin
+                                    Mohammed</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom-bar">
+                    <span>© 2026 Scholaro.xyz — Free, verified global scholarship intelligence</span>
+                    <span>Built with care for international students worldwide</span>
+                </div>
+            </footer>
         </div>
     </div>
 
@@ -287,15 +1419,18 @@
             <span>🗺️ Map & Filters</span>
         </button>
         <button class="mobile-nav-btn" id="tabList" type="button">
-            <span>🎓 Scholarships (<span id="mobileCount">0</span>)</span>
+            <span>🎓 Scholarships (<span id="mobileCount">61</span>)</span>
         </button>
     </nav>
 
-    <!-- Map & Projection Libraries -->
+    <!-- Map & Projection Libraries with secondary CDN fallback for mobile network resilience -->
     <script src="https://cdn.jsdelivr.net/npm/d3@3.5.17/d3.min.js"></script>
+    <script>window.d3 || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"><\/script>')</script>
     <script src="https://cdn.jsdelivr.net/npm/topojson@1.6.27/build/topojson.min.js"></script>
+    <script>window.topojson || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.27/topojson.min.js"><\/script>')</script>
     <script src="https://cdn.jsdelivr.net/npm/datamaps@0.5.9/dist/datamaps.world.min.js"></script>
-    <script src="scripts.js"></script>
+    <script>window.Datamap || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.9/datamaps.world.min.js"><\/script>')</script>
+    <script src="scripts.min.js"></script>
 
 </body>
 

@@ -16,7 +16,12 @@
     <meta property="og:title" content="Support Scholaro — Fuel Free Global Education & Buy a Tea 🍵">
     <meta property="og:description"
         content="Support Scholaro.xyz and buy Walid Bin Mohammed a tamarind tea. Help keep verified global scholarship research 100% free and open for students worldwide.">
-    <meta property="og:image" content="https://scholaro.xyz/1.png">
+    <meta property="og:image" content="https://scholaro.xyz/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://scholaro.xyz/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Scholaro.xyz — Support Free Global Education & Buy a Tamarind Tea">
     <meta property="og:site_name" content="Scholaro.xyz">
 
     <!-- Twitter -->
@@ -24,14 +29,67 @@
     <meta name="twitter:title" content="Support Scholaro — Fuel Free Global Education & Buy a Tea 🍵">
     <meta name="twitter:description"
         content="Support Scholaro.xyz and buy Walid Bin Mohammed a tamarind tea. Help keep verified global scholarship research 100% free and open for students worldwide.">
-    <meta name="twitter:image" content="https://scholaro.xyz/1.png">
+    <meta name="twitter:image" content="https://scholaro.xyz/og-image.jpg">
+    <meta name="twitter:image:alt" content="Scholaro.xyz — Support Free Global Education & Buy a Tamarind Tea">
+
+    <!-- Structured Data: Business Schema (EducationalOrganization) & BreadcrumbList -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Scholaro",
+        "alternateName": "Scholaro.xyz",
+        "url": "https://scholaro.xyz/",
+        "logo": "https://scholaro.xyz/1.png",
+        "image": "https://scholaro.xyz/og-image.jpg",
+        "description": "Support Scholaro and Walid Bin Mohammed to maintain verified global government scholarships research 100% free.",
+        "founder": {
+          "@type": "Person",
+          "name": "Walid Bin Mohammed",
+          "url": "https://mrwalid.me",
+          "sameAs": [
+            "https://mrwalid.me",
+            "https://www.linkedin.com/in/Walid Bin Mohammed-Walid Bin Mohammed-0272781b5/?isSelfProfile=true",
+            "https://www.facebook.com/ErrorOwner/",
+            "https://www.instagram.com/error__owner"
+          ]
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Creator Support",
+          "url": "https://scholaro.xyz/coffee.html"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://scholaro.xyz/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Support & Tamarind Tea",
+            "item": "https://scholaro.xyz/coffee.html"
+          }
+        ]
+      }
+    ]
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/png" href="1.png">
-    <link rel="apple-touch-icon" href="1.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="1.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style.css">
     <meta name="theme-color" content="#f6f8fc">
     <script>
@@ -47,11 +105,18 @@
 
 <body class="coffee-body">
     <div class="coffee-container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumbs-sep">/</span>
+            <span class="breadcrumbs-current">Support & Tamarind Tea</span>
+        </nav>
+
         <!-- Top Navigation -->
         <header class="coffee-nav">
             <div class="coffee-nav-left">
                 <a href="index.html" class="coffee-nav-brand" title="Back to Scholaro Explorer">
-                    <img src="1.png" alt="Scholaro Logo" class="brand-logo-img">
+                    <img src="1.png" alt="Scholaro — Verified Global Government Scholarships Logo" class="brand-logo-img" width="28" height="28">
                     <span>Scholaro<span class="brand-domain">.xyz</span></span>
                 </a>
             </div>
@@ -259,16 +324,20 @@
             </div>
         </footer>
 
-        <!-- Back to Explorer CTA -->
+        <!-- Back to Explorer CTA & Internal Links -->
         <div class="coffee-return-cta">
             <div class="return-cta-title">Ready to discover your next scholarship?</div>
             <div class="return-cta-desc">
-                Explore fully funded programs, calculate your CGPA requirement match, and visualize global flight
-                routes.
+                Explore 60+ fully funded programs, calculate your CGPA requirement match, and visualize global flight routes.
             </div>
-            <a href="index.html" class="btn-primary-explorer">
-                <span>← Launch Scholarship Explorer</span>
-            </a>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:4px">
+                <a href="index.html" class="btn-primary-explorer">
+                    <span>🌍 Launch Scholarship Explorer</span>
+                </a>
+                <a href="404.html" class="btn-error-secondary" style="background:var(--pn)">
+                    <span>📡 Test Destination Radar</span>
+                </a>
+            </div>
         </div>
     </div>
 

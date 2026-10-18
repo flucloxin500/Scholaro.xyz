@@ -16,23 +16,70 @@
     <meta property="og:url" content="https://scholaro.xyz/404.html">
     <meta property="og:title" content="404 Page Not Found — Scholaro.xyz">
     <meta property="og:description"
-        content="The scholarship route or destination requested does not exist. Explore 100+ verified global scholarships on Scholaro.xyz.">
-    <meta property="og:image" content="https://scholaro.xyz/1.png">
+        content="The scholarship route or destination requested does not exist. Explore 60+ verified global scholarships on Scholaro.xyz.">
+    <meta property="og:image" content="https://scholaro.xyz/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://scholaro.xyz/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Scholaro.xyz — 404 Scholarship Route Not Found">
     <meta property="og:site_name" content="Scholaro.xyz">
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="404 Page Not Found — Scholaro.xyz">
     <meta name="twitter:description"
-        content="The scholarship route or destination requested does not exist. Explore 100+ verified global scholarships on Scholaro.xyz.">
-    <meta name="twitter:image" content="https://scholaro.xyz/1.png">
+        content="The scholarship route or destination requested does not exist. Explore 60+ verified global scholarships on Scholaro.xyz.">
+    <meta name="twitter:image" content="https://scholaro.xyz/og-image.jpg">
+    <meta name="twitter:image:alt" content="Scholaro.xyz — 404 Scholarship Route Not Found">
+
+    <!-- Structured Data: Business Schema & BreadcrumbList -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Scholaro",
+        "alternateName": "Scholaro.xyz",
+        "url": "https://scholaro.xyz/",
+        "logo": "https://scholaro.xyz/1.png",
+        "image": "https://scholaro.xyz/og-image.jpg",
+        "description": "Verified global government scholarships directory, CGPA eligibility calculator, and interactive flight route projection platform.",
+        "founder": {
+          "@type": "Person",
+          "name": "Walid Bin Mohammed",
+          "url": "https://mrwalid.me"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://scholaro.xyz/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "404 Page Not Found",
+            "item": "https://scholaro.xyz/404.html"
+          }
+        ]
+      }
+    ]
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/png" href="1.png">
-    <link rel="apple-touch-icon" href="1.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="1.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style.css">
     <meta name="theme-color" content="#f6f8fc">
     <script>
@@ -48,11 +95,18 @@
 
 <body class="error-body">
     <div class="error-container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumbs-sep">/</span>
+            <span class="breadcrumbs-current">404 Route Not Found</span>
+        </nav>
+
         <!-- Top Navigation -->
         <header class="coffee-nav" role="banner">
             <div class="coffee-nav-left">
                 <a href="index.html" class="coffee-nav-brand" title="Back to Scholaro Explorer">
-                    <img src="1.png" alt="Scholaro Logo" class="brand-logo-img">
+                    <img src="1.png" alt="Scholaro — Verified Global Government Scholarships Logo" class="brand-logo-img" width="28" height="28">
                     <span>Scholaro<span class="brand-domain">.xyz</span></span>
                 </a>
             </div>
@@ -75,7 +129,7 @@
         <main class="error-hero">
             <div class="error-badge-pill">
                 <span>⚠️ Error 404</span>
-                <span>•</span>
+                <span>—</span>
                 <span>Destination Coordinates Lost</span>
             </div>
 
@@ -87,7 +141,7 @@
             </div>
 
             <h1 class="error-hero-title">
-                404: <span>Scholarship Route Not Found</span>
+                404 — <span>Scholarship Route Not Found</span>
             </h1>
 
             <p class="error-hero-subtitle">
